@@ -2,149 +2,131 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Api\ApiController;
-use App\Models\PrestasiSettings;
+use App\Http\Controllers\Controller;
 use App\Models\Post;
-use Illuminate\Http\JsonResponse;
+use App\Models\PrestasiSettings;
+use Illuminate\Http\Request;
 
-class PrestasiController extends ApiController
+class PrestasiController extends Controller
 {
-    public function settings(): JsonResponse
+    public function settings()
     {
-        try {
-            $settings = PrestasiSettings::active()->first();
-            return $this->successResponse($settings);
-        } catch (\Exception $e) {
-            return $this->errorResponse('Failed to fetch settings', 500, $e->getMessage());
-        }
+        $settings = PrestasiSettings::first();
+        
+        return response()->json([
+            'main_heading' => $settings->main_heading ?? 'Prestasi Sekolah',
+            'hero_background_color' => $settings->hero_background_color ?? '#1e40af',
+            'hero_text_color' => $settings->hero_text_color ?? '#ffffff',
+        ]);
     }
 
-    public function rightImage(): JsonResponse
+    public function rightImage()
     {
-        try {
-            $post = Post::published()
-                ->whereJsonContains('tags', 'prestasi')
-                ->latest()
-                ->first();
+        $post = Post::whereJsonContains('tags', 'prestasi')
+            ->where('is_published', true)
+            ->latest()
+            ->first();
 
-            if (!$post) {
-                return $this->successResponse(null);
-            }
-
-            return $this->successResponse([
-                'image' => $post->image ? asset('storage/' . $post->image) : null,
-                'title' => $post->title,
-                'slug' => $post->slug,
-            ]);
-        } catch (\Exception $e) {
-            return $this->errorResponse('Failed to fetch right image', 500, $e->getMessage());
+        if (!$post) {
+            return response()->json([
+                'message' => 'Tidak ada berita prestasi yang tersedia'
+            ], 404);
         }
+
+        return response()->json([
+            'id' => $post->id,
+            'title' => $post->title,
+            'excerpt' => $post->excerpt,
+            'image' => $post->getFirstMediaUrl('featured_image'),
+            'published_at' => $post->published_at,
+        ]);
     }
 
-    public function listPrestasi(): JsonResponse
+    public function listPrestasi()
     {
-        try {
-            $posts = Post::published()
-                ->whereJsonContains('tags', 'prestasi')
-                ->latest()
-                ->take(20)
-                ->get()
-                ->map(function ($post) {
-                    return [
-                        'id' => $post->id,
-                        'title' => $post->title,
-                        'slug' => $post->slug,
-                        'subtitle' => $post->subtitle,
-                        'image' => $post->image ? asset('storage/' . $post->image) : null,
-                        'author_image' => $post->author_image ? asset('storage/' . $post->author_image) : null,
-                        'category' => $post->category,
-                        'author' => $post->author,
-                        'tags' => $post->tags,
-                        'published_at' => optional($post->published_at)->format('Y-m-d H:i:s'),
-                    ];
-                });
+        $posts = Post::whereJsonContains('tags', 'prestasi')
+            ->where('is_published', true)
+            ->latest()
+            ->paginate(10);
 
-            return $this->successResponse($posts);
-        } catch (\Exception $e) {
-            return $this->errorResponse('Failed to fetch prestasi list', 500, $e->getMessage());
-        }
+        return response()->json([
+            'data' => $posts->items(),
+            'pagination' => [
+                'current_page' => $posts->currentPage(),
+                'last_page' => $posts->lastPage(),
+                'per_page' => $posts->perPage(),
+                'total' => $posts->total(),
+            ]
+        ]);
     }
 
-    public function listTahfidz(): JsonResponse
+    public function listTahfidz()
     {
-        try {
-            $posts = Post::published()
-                ->whereJsonContains('tags', 'ujian tahfidz')
-                ->latest()
-                ->take(20)
-                ->get()
-                ->map(function ($post) {
-                    return [
-                        'id' => $post->id,
-                        'title' => $post->title,
-                        'slug' => $post->slug,
-                        'subtitle' => $post->subtitle,
-                        'image' => $post->image ? asset('storage/' . $post->image) : null,
-                        'author_image' => $post->author_image ? asset('storage/' . $post->author_image) : null,
-                        'category' => $post->category,
-                        'author' => $post->author,
-                        'tags' => $post->tags,
-                        'published_at' => optional($post->published_at)->format('Y-m-d H:i:s'),
-                    ];
-                });
+        $posts = Post::whereJsonContains('tags', 'ujian tahfidz')
+            ->where('is_published', true)
+            ->latest()
+            ->paginate(10);
 
-            return $this->successResponse($posts);
-        } catch (\Exception $e) {
-            return $this->errorResponse('Failed to fetch tahfidz list', 500, $e->getMessage());
-        }
+        return response()->json([
+            'data' => $posts->items(),
+            'pagination' => [
+                'current_page' => $posts->currentPage(),
+                'last_page' => $posts->lastPage(),
+                'per_page' => $posts->perPage(),
+                'total' => $posts->total(),
+            ]
+        ]);
     }
 
-    public function complete(): JsonResponse
+    public function complete()
     {
-        try {
-            $settings = PrestasiSettings::active()->first();
-            $rightImage = Post::published()->whereJsonContains('tags', 'prestasi')->latest()->first();
-            $prestasi = Post::published()->whereJsonContains('tags', 'prestasi')->latest()->take(20)->get();
-            $tahfidz = Post::published()->whereJsonContains('tags', 'ujian tahfidz')->latest()->take(20)->get();
+        $settings = PrestasiSettings::first();
+        $rightImage = Post::whereJsonContains('tags', 'prestasi')
+            ->where('is_published', true)
+            ->latest()
+            ->first();
+        $prestasiList = Post::whereJsonContains('tags', 'prestasi')
+            ->where('is_published', true)
+            ->latest()
+            ->take(5)
+            ->get();
+        $tahfidzList = Post::whereJsonContains('tags', 'ujian tahfidz')
+            ->where('is_published', true)
+            ->latest()
+            ->take(5)
+            ->get();
 
-            return $this->successResponse([
-                'settings' => $settings,
-                'right_image' => $rightImage ? [
-                    'image' => $rightImage->image ? asset('storage/' . $rightImage->image) : null,
-                    'title' => $rightImage->title,
-                    'slug' => $rightImage->slug,
-                ] : null,
-                'prestasi' => $prestasi->map(function ($post) {
-                    return [
-                        'id' => $post->id,
-                        'title' => $post->title,
-                        'slug' => $post->slug,
-                        'subtitle' => $post->subtitle,
-                        'image' => $post->image ? asset('storage/' . $post->image) : null,
-                        'author_image' => $post->author_image ? asset('storage/' . $post->author_image) : null,
-                        'category' => $post->category,
-                        'author' => $post->author,
-                        'tags' => $post->tags,
-                        'published_at' => optional($post->published_at)->format('Y-m-d H:i:s'),
-                    ];
-                }),
-                'tahfidz' => $tahfidz->map(function ($post) {
-                    return [
-                        'id' => $post->id,
-                        'title' => $post->title,
-                        'slug' => $post->slug,
-                        'subtitle' => $post->subtitle,
-                        'image' => $post->image ? asset('storage/' . $post->image) : null,
-                        'author_image' => $post->author_image ? asset('storage/' . $post->author_image) : null,
-                        'category' => $post->category,
-                        'author' => $post->author,
-                        'tags' => $post->tags,
-                        'published_at' => optional($post->published_at)->format('Y-m-d H:i:s'),
-                    ];
-                }),
-            ]);
-        } catch (\Exception $e) {
-            return $this->errorResponse('Failed to fetch prestasi complete', 500, $e->getMessage());
-        }
+        return response()->json([
+            'settings' => [
+                'main_heading' => $settings->main_heading ?? 'Prestasi Sekolah',
+                'hero_background_color' => $settings->hero_background_color ?? '#1e40af',
+                'hero_text_color' => $settings->hero_text_color ?? '#ffffff',
+            ],
+            'right_image' => $rightImage ? [
+                'id' => $rightImage->id,
+                'title' => $rightImage->title,
+                'excerpt' => $rightImage->excerpt,
+                'image' => $rightImage->getFirstMediaUrl('featured_image'),
+                'published_at' => $rightImage->published_at,
+            ] : null,
+            'prestasi_list' => $prestasiList->map(function ($post) {
+                return [
+                    'id' => $post->id,
+                    'title' => $post->title,
+                    'excerpt' => $post->excerpt,
+                    'image' => $post->getFirstMediaUrl('featured_image'),
+                    'published_at' => $post->published_at,
+                ];
+            }),
+            'tahfidz_list' => $tahfidzList->map(function ($post) {
+                return [
+                    'id' => $post->id,
+                    'title' => $post->title,
+                    'excerpt' => $post->excerpt,
+                    'image' => $post->getFirstMediaUrl('featured_image'),
+                    'published_at' => $post->published_at,
+                ];
+            }),
+        ]);
     }
 } 

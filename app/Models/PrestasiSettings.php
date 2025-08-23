@@ -9,22 +9,9 @@ class PrestasiSettings extends Model
 {
     use HasFactory;
 
-    protected $table = 'prestasi_settings';
-
     protected $fillable = [
-        'hero_bg_from',
-        'hero_bg_via',
-        'hero_bg_to',
-        'badge_text',
-        'is_active',
+        'main_heading',
+        'hero_background_color',
+        'hero_text_color'
     ];
-
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
-
-    public function scopeActive($query)
-    {
-        return $query->where('is_active', true);
-    }
 } 
