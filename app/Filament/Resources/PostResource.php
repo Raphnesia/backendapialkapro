@@ -142,7 +142,10 @@ class PostResource extends Resource
                             ->label('Terbitkan')
                             ->default(true),
                         TagsInput::make('tags')
-                            ->label('Tagar'),
+                            ->label('Tagar')
+                            ->suggestions(['prestasi', 'ujian tahfidz', 'akademik', 'olahraga', 'seni'])
+                            ->reorderable()
+                            ->separator(','),
                         TextInput::make('meta_description')
                             ->label('Deskripsi Meta')
                             ->maxLength(160),
@@ -183,6 +186,7 @@ class PostResource extends Resource
                         'achievement' => 'success',
                         'activity' => 'info',
                         'announcement' => 'warning',
+                        'history' => 'seconday',
                         default => 'gray',
                     }),
                 TextColumn::make('author')
@@ -214,7 +218,7 @@ class PostResource extends Resource
                         'history' => 'Sejarah',
                         'other' => 'Lainnya',
                     ]),
-                Filter::make('published')
+                Tables\Filters\Filter::make('published')
                     ->label('Terbit')
                     ->query(fn ($query) => $query->where('is_published', true)),
             ])

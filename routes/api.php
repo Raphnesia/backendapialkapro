@@ -25,6 +25,9 @@ use App\Http\Controllers\Api\SocialMediaController;
 use App\Http\Controllers\Api\NavigationController;
 use App\Http\Controllers\Api\InfoPPDBController;
 use App\Http\Controllers\Api\ProfilController;
+use App\Http\Controllers\Api\TapakSuciController;
+use App\Http\Controllers\Api\HisbulWathanController;
+use App\Http\Controllers\Api\PrestasiController;
 
 Route::prefix('v1')->group(function () {
     // Info PPDB Settings
@@ -166,6 +169,25 @@ Route::get('/ekstrakurikuler/{id}', [EkstrakurikulerController::class, 'show']);
     // Navigation & Branding
     Route::get('/navigation/header', [NavigationController::class, 'header']);
     Route::get('/navigation/footer', [NavigationController::class, 'footer']);
+
+    // Tapak Suci
+    Route::get('/tapak-suci', [TapakSuciController::class, 'index']);
+    Route::get('/tapak-suci/complete', [TapakSuciController::class, 'complete']);
+    Route::get('/tapak-suci/settings', [TapakSuciController::class, 'settings']);
+    Route::get('/tapak-suci/{id}', [TapakSuciController::class, 'show']);
+
+    // Hisbul Wathan
+    Route::get('/hisbul-wathan', [HisbulWathanController::class, 'index']);
+    Route::get('/hisbul-wathan/complete', [HisbulWathanController::class, 'complete']);
+    Route::get('/hisbul-wathan/settings', [HisbulWathanController::class, 'settings']);
+    Route::get('/hisbul-wathan/{id}', [HisbulWathanController::class, 'show']);
+
+    // Prestasi
+    Route::get('/prestasi/settings', [PrestasiController::class, 'settings']);
+    Route::get('/prestasi/right-image', [PrestasiController::class, 'rightImage']);
+    Route::get('/prestasi/list', [PrestasiController::class, 'listPrestasi']);
+    Route::get('/prestasi/tahfidz', [PrestasiController::class, 'listTahfidz']);
+    Route::get('/prestasi/complete', [PrestasiController::class, 'complete']);
 
     // Health check
     Route::get('/health', function () {
