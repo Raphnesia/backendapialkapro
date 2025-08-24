@@ -20,10 +20,12 @@ Mengambil **SEMUA** data Prestasi dalam satu request (recommended untuk halaman 
 {
   "settings": {
     "main_heading": "Prestasi Sekolah",
+    "hero_subtitle": "Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan",
     "hero_background_color": "#1e40af",
     "hero_text_color": "#ffffff",
     "floating_elements_bg_color": "#fbbf24",
-    "floating_elements_text_color": "#ffffff"
+    "floating_elements_text_color": "#ffffff",
+    "feature_lists": ["Prestasi Akademik Tinggi", "Juara Olimpiade Nasional", "Prestasi up to 150+ Penghargaan", "Pengembangan Bakat Terpadu"]
   },
   "right_image": {
     "id": 1,
@@ -66,19 +68,23 @@ GET /prestasi/settings
 ```json
 {
   "main_heading": "Prestasi Sekolah",
+  "hero_subtitle": "Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan",
   "hero_background_color": "#1e40af",
   "hero_text_color": "#ffffff",
   "floating_elements_bg_color": "#fbbf24",
-  "floating_elements_text_color": "#ffffff"
+  "floating_elements_text_color": "#ffffff",
+  "feature_lists": ["Prestasi Akademik Tinggi", "Juara Olimpiade Nasional", "Prestasi up to 150+ Penghargaan", "Pengembangan Bakat Terpadu"]
 }
 ```
 
 **Field Description:**
 - `main_heading`: Judul utama halaman (contoh: "Prestasi Sekolah")
+- `hero_subtitle`: Subtitle paragraf dibawah main heading
 - `hero_background_color`: Warna background hero section
 - `hero_text_color`: Warna teks hero section
 - `floating_elements_bg_color`: Warna background floating elements
 - `floating_elements_text_color`: Warna teks floating elements
+- `feature_lists`: Array 4 item untuk feature checklist (kiri-kanan)
 
 ### **2. Right Image (Gambar Kanan)**
 ```http
@@ -109,10 +115,12 @@ GET /prestasi/list-tahfidz
 ```typescript
 interface PrestasiSettings {
   main_heading: string;
+  hero_subtitle: string;
   hero_background_color: string;
   hero_text_color: string;
   floating_elements_bg_color: string;
   floating_elements_text_color: string;
+  feature_lists: string[];
 }
 
 interface PrestasiPost {
@@ -192,6 +200,24 @@ export default function PrestasiPage() {
         }}
       >
         <h1>{settings.main_heading}</h1>
+        
+        <p className="hero-subtitle">
+          {settings.hero_subtitle}
+        </p>
+        
+        {/* Feature Lists - Two Columns */}
+        <div className="grid grid-cols-2 gap-4">
+          {settings.feature_lists.slice(0, 4).map((feature, index) => (
+            <div key={index} className="flex items-center gap-3">
+              <div className="flex-shrink-0 w-5 h-5 bg-green-500 rounded-sm flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <span className="text-gray-700 font-medium">{feature}</span>
+            </div>
+          ))}
+        </div>
         
         {/* Floating Elements */}
         <div 
@@ -324,7 +350,7 @@ export default function PrestasiPage() {
 
 ---
 
-## 🔄 **DATA FLOW**
+## �� **DATA FLOW**
 
 ### **1. Initial Load**
 ```
