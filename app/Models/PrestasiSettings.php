@@ -12,6 +12,8 @@ class PrestasiSettings extends Model
     protected $fillable = [
         'main_heading',
         'hero_background_color',
-        'hero_text_color'
+        'hero_text_color',
+        'floating_elements_bg_color',
+        'floating_elements_text_color'
     ];
 } 

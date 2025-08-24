@@ -38,6 +38,12 @@ class PrestasiSettingsResource extends Resource
                 Forms\Components\ColorPicker::make('hero_text_color')
                     ->label('Warna Teks Hero')
                     ->default('#ffffff'),
+                Forms\Components\ColorPicker::make('floating_elements_bg_color')
+                    ->label('Warna Background Floating Elements')
+                    ->default('#fbbf24'),
+                Forms\Components\ColorPicker::make('floating_elements_text_color')
+                    ->label('Warna Teks Floating Elements')
+                    ->default('#ffffff'),
             ]);
     }
 
@@ -53,6 +59,12 @@ class PrestasiSettingsResource extends Resource
                     ->badge(),
                 Tables\Columns\TextColumn::make('hero_text_color')
                     ->label('Warna Teks')
+                    ->badge(),
+                Tables\Columns\TextColumn::make('floating_elements_bg_color')
+                    ->label('Warna Background Floating')
+                    ->badge(),
+                Tables\Columns\TextColumn::make('floating_elements_text_color')
+                    ->label('Warna Teks Floating')
                     ->badge(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Terakhir Update')
