@@ -1,337 +1,442 @@
-# 📚 Dokumentasi API Frontend - Sekolah
+# Frontend API Documentation
 
-## 🎯 Overview
-Dokumentasi lengkap untuk integrasi frontend dengan backend API sekolah, termasuk endpoint baru untuk Tapak Suci, Hisbul Wathan, dan Prestasi.
+## Base URL
+```
+https://api.raphnesia.my.id/api/v1
+```
+
+## Authentication
+Semua endpoint menggunakan public access (tidak memerlukan authentication).
 
 ---
 
-## 🏛️ **1. TAPAK SUCI** (`/profil/tapak-suci`)
+## 1. Tapak Suci
 
-### **Endpoint Utama**
-```
-GET /api/v1/tapak-suci
-GET /api/v1/tapak-suci/complete
-GET /api/v1/tapak-suci/settings
-GET /api/v1/tapak-suci/{id}
-```
+### Endpoints
 
-### **1.1 Settings (Pengaturan)**
-```typescript
-// GET /api/v1/tapak-suci/settings
-interface TapakSuciSettings {
-  hero_title: string;
-  hero_subtitle: string;
-  hero_background_color: string;
-  hero_text_color: string;
-  is_active: boolean;
-}
-```
+#### GET `/tapak-suci`
+Mengambil semua data Tapak Suci (pengurus, settings, content)
 
-**Response Example:**
+**Response:**
 ```json
 {
-  "hero_title": "Tapak Suci",
-  "hero_subtitle": "Pencak Silat Muhammadiyah",
-  "hero_background_color": "#1e40af",
-  "hero_text_color": "#ffffff",
-  "is_active": true
+  "settings": {
+    "title": "Tapak Suci",
+    "subtitle": "Pencak Silat Muhammadiyah",
+    "banner_desktop": "https://api.raphnesia.my.id/storage/...",
+    "banner_mobile": "https://api.raphnesia.my.id/storage/...",
+    "title_panel_bg_color": "#1e40af",
+    "subtitle_panel_bg_color": "#3b82f6",
+    "mobile_panel_bg_color": "#1e40af"
+  },
+  "pengurus": [
+    {
+      "id": 1,
+      "position": "Ketua",
+      "name": "Nama Ketua",
+      "photo": "https://api.raphnesia.my.id/storage/...",
+      "kelas": "IX A",
+      "description": "Deskripsi ketua",
+      "order_index": 1,
+      "is_active": true
+    }
+  ],
+  "content": [
+    {
+      "id": 1,
+      "title": "Sejarah Tapak Suci",
+      "content": "Konten sejarah...",
+      "grid_type": "single",
+      "use_list_disc": true,
+      "list_items": ["Item 1", "Item 2"],
+      "bidang_structure": {
+        "bidang": "Bidang A",
+        "sub_bidang": ["Sub A1", "Sub A2"]
+      },
+      "background_color": "#f3f4f6",
+      "border_color": "#d1d5db",
+      "order_index": 1,
+      "is_active": true
+    }
+  ]
 }
 ```
 
-### **1.2 Content (Konten)**
-```typescript
-// GET /api/v1/tapak-suci
-interface TapakSuciContent {
-  id: number;
-  title: string;
-  content: string;
-  image?: string;
-  created_at: string;
-  updated_at: string;
-}
-```
+#### GET `/tapak-suci/settings`
+Mengambil pengaturan Tapak Suci saja
 
-**Response Example:**
+#### GET `/tapak-suci/pengurus`
+Mengambil data pengurus Tapak Suci saja
+
+#### GET `/tapak-suci/content`
+Mengambil konten Tapak Suci saja
+
+---
+
+## 2. Hisbul Wathan
+
+### Endpoints
+
+#### GET `/hisbul-wathan`
+Mengambil semua data Hisbul Wathan (pengurus, settings, content)
+
+**Response:**
 ```json
-[
-  {
+{
+  "settings": {
+    "title": "Hisbul Wathan",
+    "subtitle": "Kepanduan Muhammadiyah",
+    "banner_desktop": "https://api.raphnesia.my.id/storage/...",
+    "banner_mobile": "https://api.raphnesia.my.id/storage/...",
+    "title_panel_bg_color": "#059669",
+    "subtitle_panel_bg_color": "#10b981",
+    "mobile_panel_bg_color": "#059669"
+  },
+  "pengurus": [
+    {
+      "id": 1,
+      "position": "Ketua",
+      "name": "Nama Ketua",
+      "photo": "https://api.raphnesia.my.id/storage/...",
+      "kelas": "IX A",
+      "description": "Deskripsi ketua",
+      "order_index": 1,
+      "is_active": true
+    }
+  ],
+  "content": [
+    {
+      "id": 1,
+      "title": "Sejarah Hisbul Wathan",
+      "content": "Konten sejarah...",
+      "grid_type": "single",
+      "use_list_disc": true,
+      "list_items": ["Item 1", "Item 2"],
+      "bidang_structure": {
+        "bidang": "Bidang A",
+        "sub_bidang": ["Sub A1", "Sub A2"]
+      },
+      "background_color": "#f3f4f6",
+      "border_color": "#d1d5db",
+      "order_index": 1,
+      "is_active": true
+    }
+  ]
+}
+```
+
+#### GET `/hisbul-wathan/settings`
+Mengambil pengaturan Hisbul Wathan saja
+
+#### GET `/hisbul-wathan/pengurus`
+Mengambil data pengurus Hisbul Wathan saja
+
+#### GET `/hisbul-wathan/content`
+Mengambil konten Hisbul Wathan saja
+
+---
+
+## 3. Prestasi
+
+### Endpoints
+
+#### GET `/prestasi`
+Mengambil semua data Prestasi (settings, right image, list prestasi, list tahfidz)
+
+**Response:**
+```json
+{
+  "settings": {
+    "main_heading": "Prestasi Sekolah",
+    "hero_bg_from": "#1e40af",
+    "hero_bg_via": "#3b82f6", 
+    "hero_bg_to": "#60a5fa",
+    "badge_text": "Prestasi Terbaru",
+    "floating_elements_bg_color": "#fbbf24",
+    "floating_elements_text_color": "#ffffff"
+  },
+  "right_image": {
     "id": 1,
-    "title": "Sejarah Tapak Suci",
-    "content": "Tapak Suci adalah organisasi pencak silat...",
-    "image": "https://api.raphnesia.my.id/storage/1/tapak-suci.jpg",
-    "created_at": "2024-12-19T10:00:00.000000Z",
-    "updated_at": "2024-12-19T10:00:00.000000Z"
-  }
-]
-```
-
-### **1.3 Complete Data**
-```typescript
-// GET /api/v1/tapak-suci/complete
-interface TapakSuciComplete {
-  settings: TapakSuciSettings;
-  content: TapakSuciContent[];
+    "title": "Judul Berita Prestasi",
+    "featured_image": "https://api.raphnesia.my.id/storage/...",
+    "excerpt": "Ringkasan berita prestasi...",
+    "published_at": "2024-12-19T10:00:00.000000Z"
+  },
+  "list_prestasi": [
+    {
+      "id": 1,
+      "title": "Juara 1 Lomba Matematika",
+      "featured_image": "https://api.raphnesia.my.id/storage/...",
+      "excerpt": "Siswa berhasil meraih...",
+      "published_at": "2024-12-19T10:00:00.000000Z"
+    }
+  ],
+  "list_tahfidz": [
+    {
+      "id": 2,
+      "title": "Ujian Tahfidz Sekali Duduk",
+      "featured_image": "https://api.raphnesia.my.id/storage/...",
+      "excerpt": "Siswa berhasil menghafal...",
+      "published_at": "2024-12-19T10:00:00.000000Z"
+    }
+  ]
 }
 ```
+
+#### GET `/prestasi/settings`
+Mengambil pengaturan Prestasi saja
+
+#### GET `/prestasi/right-image`
+Mengambil gambar kanan dari berita dengan tag "prestasi"
+
+#### GET `/prestasi/list-prestasi`
+Mengambil list berita dengan tag "prestasi"
+
+#### GET `/prestasi/list-tahfidz`
+Mengambil list berita dengan tag "ujian tahfidz"
 
 ---
 
-## 🏃‍♂️ **2. HISBUL WATHAN** (`/profil/hisbul-wathan`)
+## 4. Berita/Post
 
-### **Endpoint Utama**
-```
-GET /api/v1/hisbul-wathan
-GET /api/v1/hisbul-wathan/complete
-GET /api/v1/hisbul-wathan/settings
-GET /api/v1/hisbul-wathan/{id}
-```
+### Endpoints
 
-### **2.1 Settings (Pengaturan)**
-```typescript
-// GET /api/v1/hisbul-wathan/settings
-interface HisbulWathanSettings {
-  hero_title: string;
-  hero_subtitle: string;
-  hero_background_color: string;
-  hero_text_color: string;
-  is_active: boolean;
-}
-```
+#### GET `/posts`
+Mengambil semua berita yang dipublish
 
-**Response Example:**
-```json
-{
-  "hero_title": "Hisbul Wathan",
-  "hero_subtitle": "Kepanduan Muhammadiyah",
-  "hero_background_color": "#059669",
-  "hero_text_color": "#ffffff",
-  "is_active": true
-}
-```
+**Query Parameters:**
+- `category` (optional): academic, achievement, activity, announcement, history
+- `tags` (optional): prestasi, ujian tahfidz, akademik, olahraga, seni
+- `page` (optional): halaman untuk pagination
 
-### **2.2 Content (Konten)**
-```typescript
-// GET /api/v1/hisbul-wathan
-interface HisbulWathanContent {
-  id: number;
-  title: string;
-  content: string;
-  image?: string;
-  created_at: string;
-  updated_at: string;
-}
-```
-
-### **2.3 Complete Data**
-```typescript
-// GET /api/v1/hisbul-wathan/complete
-interface HisbulWathanComplete {
-  settings: HisbulWathanSettings;
-  content: HisbulWathanContent[];
-}
-```
-
----
-
-## 🏆 **3. PRESTASI** (`/prestasi`)
-
-### **Endpoint Utama**
-```
-GET /api/v1/prestasi/settings
-GET /api/v1/prestasi/right-image
-GET /api/v1/prestasi/list
-GET /api/v1/prestasi/tahfidz
-GET /api/v1/prestasi/complete
-```
-
-### **3.1 Settings (Pengaturan)**
-```typescript
-// GET /api/v1/prestasi/settings
-interface PrestasiSettings {
-  main_heading: string;
-  hero_background_color: string;
-  hero_text_color: string;
-}
-```
-
-**Response Example:**
-```json
-{
-  "main_heading": "Prestasi Sekolah",
-  "hero_background_color": "#1e40af",
-  "hero_text_color": "#ffffff"
-}
-```
-
-### **3.2 Right Image (Gambar Kanan)**
-```typescript
-// GET /api/v1/prestasi/right-image
-interface PrestasiRightImage {
-  id: number;
-  title: string;
-  excerpt: string;
-  image: string;
-  published_at: string;
-}
-```
-
-**Response Example:**
-```json
-{
-  "id": 15,
-  "title": "Juara 1 Olimpiade Sains",
-  "excerpt": "Siswa SMP Muhammadiyah Al Kautsar berhasil...",
-  "image": "https://api.raphnesia.my.id/storage/15/olimpiade.jpg",
-  "published_at": "2024-12-19T10:00:00.000000Z"
-}
-```
-
-### **3.3 List Prestasi**
-```typescript
-// GET /api/v1/prestasi/list
-interface PrestasiListResponse {
-  data: PrestasiPost[];
-  pagination: {
-    current_page: number;
-    last_page: number;
-    per_page: number;
-    total: number;
-  };
-}
-
-interface PrestasiPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  image: string;
-  published_at: string;
-  tags: string[];
-}
-```
-
-**Response Example:**
+**Response:**
 ```json
 {
   "data": [
     {
-      "id": 15,
-      "title": "Juara 1 Olimpiade Sains",
-      "excerpt": "Siswa SMP Muhammadiyah Al Kautsar...",
-      "image": "https://api.raphnesia.my.id/storage/15/olimpiade.jpg",
+      "id": 1,
+      "title": "Judul Berita",
+      "excerpt": "Ringkasan berita...",
+      "content": "Konten lengkap berita...",
+      "featured_image": "https://api.raphnesia.my.id/storage/...",
+      "category": "achievement",
+      "tags": ["prestasi", "akademik"],
+      "is_published": true,
       "published_at": "2024-12-19T10:00:00.000000Z",
-      "tags": ["prestasi", "akademik"]
+      "created_at": "2024-12-19T10:00:00.000000Z",
+      "updated_at": "2024-12-19T10:00:00.000000Z"
     }
   ],
-  "pagination": {
-    "current_page": 1,
-    "last_page": 3,
-    "per_page": 10,
-    "total": 25
-  }
-}
-```
-
-### **3.4 List Tahfidz**
-```typescript
-// GET /api/v1/prestasi/tahfidz
-interface TahfidzListResponse {
-  data: TahfidzPost[];
-  pagination: {
-    current_page: number;
-    last_page: number;
-    per_page: number;
-    total: number;
-  };
-}
-
-interface TahfidzPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  image: string;
-  published_at: string;
-  tags: string[];
-}
-```
-
-### **3.5 Complete Data**
-```typescript
-// GET /api/v1/prestasi/complete
-interface PrestasiComplete {
-  settings: PrestasiSettings;
-  right_image: PrestasiRightImage | null;
-  prestasi_list: PrestasiPost[];
-  tahfidz_list: TahfidzPost[];
+  "links": {...},
+  "meta": {...}
 }
 ```
 
 ---
 
-## 🔧 **4. IMPLEMENTASI FRONTEND**
+## TypeScript Types
 
-### **4.1 Next.js API Client**
 ```typescript
-// lib/api.ts
-const API_BASE = 'https://api.raphnesia.my.id/api/v1';
+// Tapak Suci Types
+interface TapakSuciSettings {
+  title: string;
+  subtitle: string;
+  banner_desktop: string;
+  banner_mobile: string;
+  title_panel_bg_color: string;
+  subtitle_panel_bg_color: string;
+  mobile_panel_bg_color: string;
+}
 
-export const apiClient = {
-  // Tapak Suci
-  getTapakSuciSettings: () => 
-    fetch(`${API_BASE}/tapak-suci/settings`).then(res => res.json()),
-  
-  getTapakSuciContent: () => 
-    fetch(`${API_BASE}/tapak-suci`).then(res => res.json()),
-  
-  getTapakSuciComplete: () => 
-    fetch(`${API_BASE}/tapak-suci/complete`).then(res => res.json()),
+interface TapakSuciPengurus {
+  id: number;
+  position: string;
+  name: string;
+  photo: string;
+  kelas: string;
+  description: string;
+  order_index: number;
+  is_active: boolean;
+}
 
-  // Hisbul Wathan
-  getHisbulWathanSettings: () => 
-    fetch(`${API_BASE}/hisbul-wathan/settings`).then(res => res.json()),
-  
-  getHisbulWathanContent: () => 
-    fetch(`${API_BASE}/hisbul-wathan`).then(res => res.json()),
-  
-  getHisbulWathanComplete: () => 
-    fetch(`${API_BASE}/hisbul-wathan/complete`).then(res => res.json()),
+interface TapakSuciContent {
+  id: number;
+  title: string;
+  content: string;
+  grid_type: 'single' | 'double' | 'triple';
+  use_list_disc: boolean;
+  list_items: string[];
+  bidang_structure: {
+    bidang: string;
+    sub_bidang: string[];
+  };
+  background_color: string;
+  border_color: string;
+  order_index: number;
+  is_active: boolean;
+}
 
-  // Prestasi
-  getPrestasiSettings: () => 
-    fetch(`${API_BASE}/prestasi/settings`).then(res => res.json()),
-  
-  getPrestasiRightImage: () => 
-    fetch(`${API_BASE}/prestasi/right-image`).then(res => res.json()),
-  
-  getPrestasiList: (page = 1) => 
-    fetch(`${API_BASE}/prestasi/list?page=${page}`).then(res => res.json()),
-  
-  getTahfidzList: (page = 1) => 
-    fetch(`${API_BASE}/prestasi/tahfidz?page=${page}`).then(res => res.json()),
-  
-  getPrestasiComplete: () => 
-    fetch(`${API_BASE}/prestasi/complete`).then(res => res.json()),
-};
+// Hisbul Wathan Types
+interface HisbulWathanSettings {
+  title: string;
+  subtitle: string;
+  banner_desktop: string;
+  banner_mobile: string;
+  title_panel_bg_color: string;
+  subtitle_panel_bg_color: string;
+  mobile_panel_bg_color: string;
+}
+
+interface HisbulWathanPengurus {
+  id: number;
+  position: string;
+  name: string;
+  photo: string;
+  kelas: string;
+  description: string;
+  order_index: number;
+  is_active: boolean;
+}
+
+interface HisbulWathanContent {
+  id: number;
+  title: string;
+  content: string;
+  grid_type: 'single' | 'double' | 'triple';
+  use_list_disc: boolean;
+  list_items: string[];
+  bidang_structure: {
+    bidang: string;
+    sub_bidang: string[];
+  };
+  background_color: string;
+  border_color: string;
+  order_index: number;
+  is_active: boolean;
+}
+
+// Prestasi Types
+interface PrestasiSettings {
+  main_heading: string;
+  hero_bg_from: string;
+  hero_bg_via: string;
+  hero_bg_to: string;
+  badge_text: string;
+  floating_elements_bg_color: string;
+  floating_elements_text_color: string;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  excerpt: string;
+  content: string;
+  featured_image: string;
+  category: 'academic' | 'achievement' | 'activity' | 'announcement' | 'history';
+  tags: string[];
+  is_published: boolean;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+}
+
+// Complete Response Types
+interface TapakSuciComplete {
+  settings: TapakSuciSettings;
+  pengurus: TapakSuciPengurus[];
+  content: TapakSuciContent[];
+}
+
+interface HisbulWathanComplete {
+  settings: HisbulWathanSettings;
+  pengurus: HisbulWathanPengurus[];
+  content: HisbulWathanContent[];
+}
+
+interface PrestasiComplete {
+  settings: PrestasiSettings;
+  right_image: Post | null;
+  list_prestasi: Post[];
+  list_tahfidz: Post[];
+}
 ```
 
-### **4.2 React Hook untuk Data Fetching**
-```typescript
-// hooks/usePrestasi.ts
-import { useState, useEffect } from 'react';
-import { apiClient } from '@/lib/api';
+---
 
-export const usePrestasi = () => {
-  const [data, setData] = useState(null);
+## Implementation Examples
+
+### React Hook untuk Fetch Data
+
+```typescript
+// hooks/useTapakSuci.ts
+import { useState, useEffect } from 'react';
+
+export const useTapakSuci = () => {
+  const [data, setData] = useState<TapakSuciComplete | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
-        const result = await apiClient.getPrestasiComplete();
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/tapak-suci`);
+        if (!response.ok) throw new Error('Failed to fetch');
+        const result = await response.json();
         setData(result);
       } catch (err) {
-        setError(err);
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return { data, loading, error };
+};
+
+// hooks/useHisbulWathan.ts
+export const useHisbulWathan = () => {
+  const [data, setData] = useState<HisbulWathanComplete | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/hisbul-wathan`);
+        if (!response.ok) throw new Error('Failed to fetch');
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return { data, loading, error };
+};
+
+// hooks/usePrestasi.ts
+export const usePrestasi = () => {
+  const [data, setData] = useState<PrestasiComplete | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/prestasi`);
+        if (!response.ok) throw new Error('Failed to fetch');
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
       } finally {
         setLoading(false);
       }
@@ -344,118 +449,76 @@ export const usePrestasi = () => {
 };
 ```
 
-### **4.3 Contoh Penggunaan di Component**
-```typescript
-// components/PrestasiHero.tsx
-import { usePrestasi } from '@/hooks/usePrestasi';
+### Penggunaan di Component
 
-export const PrestasiHero = () => {
-  const { data, loading, error } = usePrestasi();
+```typescript
+// pages/profil/tapak-suci.tsx
+import { useTapakSuci } from '@/hooks/useTapakSuci';
+
+export default function TapakSuciPage() {
+  const { data, loading, error } = useTapakSuci();
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error loading data</div>;
-  if (!data) return null;
-
-  const { settings } = data;
+  if (error) return <div>Error: {error}</div>;
+  if (!data) return <div>No data</div>;
 
   return (
-    <div 
-      className="hero-section"
-      style={{ 
-        backgroundColor: settings.hero_background_color,
-        color: settings.hero_text_color 
-      }}
-    >
-      <h1>{settings.main_heading}</h1>
-    </div>
-  );
-};
-```
-
----
-
-## 📱 **5. RESPONSIVE DESIGN**
-
-### **5.1 Hero Section Mobile**
-```typescript
-// Pastikan hero section responsive
-const HeroSection = ({ settings, isMobile }) => (
-  <div 
-    className={`hero ${isMobile ? 'hero-mobile' : 'hero-desktop'}`}
-    style={{ 
-      backgroundColor: settings.hero_background_color,
-      color: settings.hero_text_color 
-    }}
-  >
-    <h1 className={isMobile ? 'text-2xl' : 'text-4xl'}>
-      {settings.main_heading}
-    </h1>
-    <p className={isMobile ? 'text-sm' : 'text-lg'}>
-      {settings.hero_subtitle}
-    </p>
-  </div>
-);
-```
-
-### **5.2 Image Overlay Responsive**
-```typescript
-// Image dengan overlay yang responsive
-const ImageWithOverlay = ({ image, title, subtitle, isMobile }) => (
-  <div className="relative">
-    <img 
-      src={image} 
-      alt={title}
-      className={isMobile ? 'w-full h-48' : 'w-full h-96'}
-    />
-    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="text-center text-white">
-        <h2 className={isMobile ? 'text-xl' : 'text-3xl'}>{title}</h2>
-        <p className={isMobile ? 'text-sm' : 'text-lg'}>{subtitle}</p>
+    <div>
+      <div 
+        style={{ 
+          backgroundImage: `url(${data.settings.banner_desktop})`,
+          backgroundColor: data.settings.title_panel_bg_color 
+        }}
+      >
+        <h1>{data.settings.title}</h1>
+        <p>{data.settings.subtitle}</p>
       </div>
-    </div>
-  </div>
-);
-```
+      
+      {/* Pengurus */}
+      <div>
+        {data.pengurus.map((pengurus) => (
+          <div key={pengurus.id}>
+            <img src={pengurus.photo} alt={pengurus.name} />
+            <h3>{pengurus.position}</h3>
+            <p>{pengurus.name}</p>
+            <p>{pengurus.kelas}</p>
+            <p>{pengurus.description}</p>
+          </div>
+        ))}
+      </div>
 
----
-
-## 🚀 **6. DEPLOYMENT & TESTING**
-
-### **6.1 Test API Endpoints**
-```bash
-# Test Tapak Suci
-curl "https://api.raphnesia.my.id/api/v1/tapak-suci/settings"
-curl "https://api.raphnesia.my.id/api/v1/tapak-suci/complete"
-
-# Test Hisbul Wathan
-curl "https://api.raphnesia.my.id/api/v1/hisbul-wathan/settings"
-curl "https://api.raphnesia.my.id/api/v1/hisbul-wathan/complete"
-
-# Test Prestasi
-curl "https://api.raphnesia.my.id/api/v1/prestasi/settings"
-curl "https://api.raphnesia.my.id/api/v1/prestasi/complete"
-```
-
-### **6.2 Error Handling**
-```typescript
-// Handle API errors gracefully
-const handleApiError = (error: any) => {
-  if (error.status === 404) {
-    return 'Data tidak ditemukan';
-  }
-  if (error.status === 500) {
-    return 'Server error, coba lagi nanti';
-  }
-  return 'Terjadi kesalahan';
-};
-
-// Gunakan di component
-const { data, loading, error } = usePrestasi();
-
-if (error) {
-  return (
-    <div className="error-message">
-      {handleApiError(error)}
+      {/* Content */}
+      <div>
+        {data.content.map((item) => (
+          <div 
+            key={item.id}
+            style={{
+              backgroundColor: item.background_color,
+              borderColor: item.border_color
+            }}
+          >
+            <h3>{item.title}</h3>
+            <div>{item.content}</div>
+            {item.use_list_disc && (
+              <ul>
+                {item.list_items.map((listItem, index) => (
+                  <li key={index}>{listItem}</li>
+                ))}
+              </ul>
+            )}
+            {item.bidang_structure && (
+              <div>
+                <h4>{item.bidang_structure.bidang}</h4>
+                <ul>
+                  {item.bidang_structure.sub_bidang.map((sub, index) => (
+                    <li key={index}>{sub}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -463,55 +526,41 @@ if (error) {
 
 ---
 
-## 📋 **7. CHECKLIST IMPLEMENTASI**
+## Environment Variables
 
-### **Frontend Setup**
-- [ ] Install dependencies (axios/fetch)
-- [ ] Setup API client
-- [ ] Create custom hooks
-- [ ] Setup error handling
-- [ ] Setup loading states
-
-### **Components**
-- [ ] Tapak Suci Hero Section
-- [ ] Tapak Suci Content List
-- [ ] Hisbul Wathan Hero Section
-- [ ] Hisbul Wathan Content List
-- [ ] Prestasi Hero Section
-- [ ] Prestasi Right Image
-- [ ] Prestasi List
-- [ ] Tahfidz List
-
-### **Pages**
-- [ ] `/profil/tapak-suci`
-- [ ] `/profil/hisbul-wathan`
-- [ ] `/prestasi`
-
-### **Testing**
-- [ ] Test semua API endpoints
-- [ ] Test responsive design
-- [ ] Test error handling
-- [ ] Test loading states
+```bash
+# .env.local
+NEXT_PUBLIC_API_BASE=https://api.raphnesia.my.id/api/v1
+```
 
 ---
 
-## 🔗 **8. LINKS & REFERENCES**
+## Error Handling
 
-- **Backend API**: `https://api.raphnesia.my.id/api/v1`
-- **Admin Dashboard**: `https://api.raphnesia.my.id/admin`
-- **Documentation**: File ini
-- **Git Repository**: `Raphnesia/backendapischool`
+Semua endpoint mengembalikan response dengan format:
+
+**Success (200):**
+```json
+{
+  "data": {...} // atau langsung object untuk endpoint tertentu
+}
+```
+
+**Error (4xx/5xx):**
+```json
+{
+  "message": "Error description",
+  "errors": {...} // untuk validation errors
+}
+```
 
 ---
 
-## 📞 **9. SUPPORT**
+## Notes
 
-Jika ada masalah atau pertanyaan:
-1. Cek API response dengan curl
-2. Cek browser console untuk error
-3. Cek network tab untuk request/response
-4. Hubungi backend developer
-
----
-
-**🎉 Selamat mengintegrasikan! Semua endpoint sudah siap dan siap digunakan.** 
+1. **Image URLs**: Semua gambar menggunakan base URL `https://api.raphnesia.my.id/storage/`
+2. **Colors**: Semua warna dalam format HEX (#RRGGBB)
+3. **Dates**: Format ISO 8601 (YYYY-MM-DDTHH:mm:ss.ssssssZ)
+4. **Pagination**: Hanya untuk endpoint `/posts` dengan parameter `page`
+5. **Tags**: Berita bisa memiliki multiple tags, termasuk "prestasi" dan "ujian tahfidz"
+6. **Categories**: Berita dikategorikan sebagai academic, achievement, activity, announcement, atau history 
