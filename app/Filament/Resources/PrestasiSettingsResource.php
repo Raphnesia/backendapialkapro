@@ -32,6 +32,10 @@ class PrestasiSettingsResource extends Resource
                     ->label('Judul Utama')
                     ->default('Prestasi Sekolah')
                     ->required(),
+                Forms\Components\Textarea::make('hero_subtitle')
+                    ->label('Subtitle Hero')
+                    ->default('Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan')
+                    ->rows(3),
                 Forms\Components\ColorPicker::make('hero_background_color')
                     ->label('Warna Background Hero')
                     ->default('#1e40af'),
@@ -44,6 +48,11 @@ class PrestasiSettingsResource extends Resource
                 Forms\Components\ColorPicker::make('floating_elements_text_color')
                     ->label('Warna Teks Floating Elements')
                     ->default('#ffffff'),
+                Forms\Components\TagsInput::make('feature_lists')
+                    ->label('Feature Lists (4 Item)')
+                    ->default(['Prestasi Akademik Tinggi', 'Juara Olimpiade Nasional', 'Prestasi up to 150+ Penghargaan', 'Pengembangan Bakat Terpadu'])
+                    ->placeholder('Tambah feature list')
+                    ->helperText('Masukkan 4 fitur untuk ditampilkan di hero section'),
             ]);
     }
 
@@ -54,6 +63,16 @@ class PrestasiSettingsResource extends Resource
                 Tables\Columns\TextColumn::make('main_heading')
                     ->label('Judul Utama')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('hero_subtitle')
+                    ->label('Subtitle Hero')
+                    ->limit(50)
+                    ->tooltip(function (Tables\Columns\TextColumn $column): ?string {
+                        $state = $column->getState();
+                        if (strlen($state) <= 50) {
+                            return null;
+                        }
+                        return $state;
+                    }),
                 Tables\Columns\TextColumn::make('hero_background_color')
                     ->label('Warna Background')
                     ->badge(),
@@ -66,6 +85,13 @@ class PrestasiSettingsResource extends Resource
                 Tables\Columns\TextColumn::make('floating_elements_text_color')
                     ->label('Warna Teks Floating')
                     ->badge(),
+                Tables\Columns\TextColumn::make('feature_lists')
+                    ->label('Feature Lists')
+                    ->formatStateUsing(fn (array $state): string => count($state) . ' item(s)')
+                    ->tooltip(function (Tables\Columns\TextColumn $column): ?string {
+                        $state = $column->getState();
+                        return is_array($state) ? implode(', ', $state) : '';
+                    }),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Terakhir Update')
                     ->dateTime('d M Y H:i')

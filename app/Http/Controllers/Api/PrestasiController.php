@@ -15,8 +15,12 @@ class PrestasiController extends Controller
         
         return response()->json([
             'main_heading' => $settings->main_heading ?? 'Prestasi Sekolah',
+            'hero_subtitle' => $settings->hero_subtitle ?? 'Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan',
             'hero_background_color' => $settings->hero_background_color ?? '#1e40af',
             'hero_text_color' => $settings->hero_text_color ?? '#ffffff',
+            'floating_elements_bg_color' => $settings->floating_elements_bg_color ?? '#fbbf24',
+            'floating_elements_text_color' => $settings->floating_elements_text_color ?? '#ffffff',
+            'feature_lists' => $settings->feature_lists ?? ['Prestasi Akademik Tinggi', 'Juara Olimpiade Nasional', 'Prestasi up to 150+ Penghargaan', 'Pengembangan Bakat Terpadu'],
         ]);
     }
 
@@ -99,8 +103,12 @@ class PrestasiController extends Controller
         return response()->json([
             'settings' => [
                 'main_heading' => $settings->main_heading ?? 'Prestasi Sekolah',
+                'hero_subtitle' => $settings->hero_subtitle ?? 'Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan',
                 'hero_background_color' => $settings->hero_background_color ?? '#1e40af',
                 'hero_text_color' => $settings->hero_text_color ?? '#ffffff',
+                'floating_elements_bg_color' => $settings->floating_elements_bg_color ?? '#fbbf24',
+                'floating_elements_text_color' => $settings->floating_elements_text_color ?? '#ffffff',
+                'feature_lists' => $settings->feature_lists ?? ['Prestasi Akademik Tinggi', 'Juara Olimpiade Nasional', 'Prestasi up to 150+ Penghargaan', 'Pengembangan Bakat Terpadu'],
             ],
             'right_image' => $rightImage ? [
                 'id' => $rightImage->id,
