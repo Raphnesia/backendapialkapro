@@ -36,6 +36,10 @@ class PrestasiSettingsResource extends Resource
                     ->label('Subtitle Hero')
                     ->default('Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan')
                     ->rows(3),
+                Forms\Components\TextInput::make('badge_text')
+                    ->label('Badge Text')
+                    ->default('SMP Muhammadiyah Al Kautsar')
+                    ->required(),
                 Forms\Components\ColorPicker::make('hero_background_color')
                     ->label('Warna Background Hero')
                     ->default('#1e40af'),
@@ -73,6 +77,9 @@ class PrestasiSettingsResource extends Resource
                         }
                         return $state;
                     }),
+                Tables\Columns\TextColumn::make('badge_text')
+                    ->label('Badge Text')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('hero_background_color')
                     ->label('Warna Background')
                     ->badge(),

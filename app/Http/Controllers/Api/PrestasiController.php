@@ -16,6 +16,7 @@ class PrestasiController extends Controller
         return response()->json([
             'main_heading' => $settings->main_heading ?? 'Prestasi Sekolah',
             'hero_subtitle' => $settings->hero_subtitle ?? 'Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan',
+            'badge_text' => $settings->badge_text ?? 'SMP Muhammadiyah Al Kautsar',
             'hero_background_color' => $settings->hero_background_color ?? '#1e40af',
             'hero_text_color' => $settings->hero_text_color ?? '#ffffff',
             'floating_elements_bg_color' => $settings->floating_elements_bg_color ?? '#fbbf24',
@@ -104,6 +105,7 @@ class PrestasiController extends Controller
             'settings' => [
                 'main_heading' => $settings->main_heading ?? 'Prestasi Sekolah',
                 'hero_subtitle' => $settings->hero_subtitle ?? 'Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan',
+                'badge_text' => $settings->badge_text ?? 'SMP Muhammadiyah Al Kautsar',
                 'hero_background_color' => $settings->hero_background_color ?? '#1e40af',
                 'hero_text_color' => $settings->hero_text_color ?? '#ffffff',
                 'floating_elements_bg_color' => $settings->floating_elements_bg_color ?? '#fbbf24',

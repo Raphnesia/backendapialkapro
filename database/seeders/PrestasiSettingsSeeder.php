@@ -19,6 +19,7 @@ class PrestasiSettingsSeeder extends Seeder
         PrestasiSettings::create([
             'main_heading' => 'Prestasi membanggakan dari Siswa Siswi SMP Muhammadiyah Al-Kautsar PK Kartasura',
             'hero_subtitle' => 'Siswa berprestasi dengan pencapaian luar biasa dan aktivasi instan bikin prestasi akademik dan non-akademik siap jalan bebas hambatan',
+            'badge_text' => 'SMP Muhammadiyah Al Kautsar',
             'hero_background_color' => '#1e40af',
             'hero_text_color' => '#ffffff',
             'floating_elements_bg_color' => '#fbbf24',
