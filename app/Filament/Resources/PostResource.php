@@ -75,17 +75,13 @@ class PostResource extends Resource
                     ->schema([
                         Repeater::make('navigation_sections')
                             ->label('Daftar Isi / Navigation')
-                            ->helperText('Tambahkan judul-judul dalam berita untuk navigation sidebar')
+                            ->helperText('Tambahkan judul-judul dalam berita untuk navigation sidebar. ID akan otomatis dibuat dari judul.')
                             ->schema([
-                                TextInput::make('id')
-                                    ->label('ID (tanpa spasi)')
-                                    ->required()
-                                    ->placeholder('contoh: pengertian-berbakti')
-                                    ->rules(['required', 'regex:/^[a-z0-9-]+$/']),
                                 TextInput::make('title')
                                     ->label('Judul Section')
                                     ->required()
-                                    ->placeholder('contoh: Apa itu Berbakti?'),
+                                    ->placeholder('contoh: Apa itu Berbakti?')
+                                    ->helperText('ID akan otomatis dibuat dari judul ini (contoh: "Apa itu Berbakti?" → "apa-itu-berbakti")'),
                                 // Pada bagian navigation_sections, tambahkan ke RichEditor content
                                 RichEditor::make('content')
                                     ->label('Isi Section')
