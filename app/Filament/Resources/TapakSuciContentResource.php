@@ -36,7 +36,11 @@ class TapakSuciContentResource extends Resource
                         'grid-cols-2' => '2 Kolom',
                         'grid-cols-3' => '3 Kolom',
                     ])->default('grid-cols-1'),
-                Forms\Components\Toggle::make('use_list_disc')->label('Gunakan Struktur Bidang')->default(false),
+                Forms\Components\Toggle::make('use_list_disc')
+                    ->label('Gunakan Struktur Bidang')
+                    ->default(false)
+                    ->helperText('Aktifkan untuk membuat struktur bidang dengan anggota')
+                    ->live(),
                 Forms\Components\Repeater::make('bidang_structure')
                     ->label('Struktur Bidang Kompleks')
                     ->schema([
@@ -94,4 +98,4 @@ class TapakSuciContentResource extends Resource
             'edit' => Pages\EditTapakSuciContent::route('/{record}/edit'),
         ];
     }
-} 
+}
