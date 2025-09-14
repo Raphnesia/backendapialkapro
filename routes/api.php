@@ -28,6 +28,7 @@ use App\Http\Controllers\Api\ProfilController;
 use App\Http\Controllers\Api\TapakSuciController;
 use App\Http\Controllers\Api\HisbulWathanController;
 use App\Http\Controllers\Api\PrestasiController;
+use App\Http\Controllers\Api\AlkaproLibraryController;
 
 Route::prefix('v1')->group(function () {
     // Info PPDB Settings
@@ -188,6 +189,12 @@ Route::get('/ekstrakurikuler/{id}', [EkstrakurikulerController::class, 'show']);
     Route::get('/prestasi/list', [PrestasiController::class, 'listPrestasi']);
     Route::get('/prestasi/tahfidz', [PrestasiController::class, 'listTahfidz']);
     Route::get('/prestasi/complete', [PrestasiController::class, 'complete']);
+
+    // Alkapro Library
+    Route::get('/alkapro-library/settings', [AlkaproLibraryController::class, 'getSettings']);
+    Route::get('/alkapro-library/complete', [AlkaproLibraryController::class, 'getComplete']);
+    Route::get('/alkapro-library/gallery', [AlkaproLibraryController::class, 'getGallery']);
+    Route::get('/alkapro-library/pamphlets', [AlkaproLibraryController::class, 'getPamphlets']);
 
     // Health check
     Route::get('/health', function () {
