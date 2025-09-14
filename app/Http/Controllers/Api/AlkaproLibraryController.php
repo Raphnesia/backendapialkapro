@@ -176,6 +176,11 @@ class AlkaproLibraryController extends Controller
                 'collection_features' => $settings->collection_features ?? [],
                 'facility_features' => $settings->facility_features ?? [],
             ],
+            'facilities_flow' => $settings->show_facilities_flow ? [
+                'title' => $settings->facilities_flow_title,
+                'description' => $settings->facilities_flow_description,
+                'steps' => $settings->facilities_flow_steps ?? [],
+            ] : null,
             'display_settings' => [
                 'show_gallery' => $settings->show_gallery,
                 'show_pamphlets' => $settings->show_pamphlets,
@@ -183,6 +188,7 @@ class AlkaproLibraryController extends Controller
                 'show_social_media' => $settings->show_social_media,
                 'show_programs' => $settings->show_programs,
                 'show_additional_services' => $settings->show_additional_services,
+                'show_facilities_flow' => $settings->show_facilities_flow,
                 'show_cta_section' => $settings->show_cta_section,
             ],
             'is_active' => $settings->is_active,
@@ -219,6 +225,11 @@ class AlkaproLibraryController extends Controller
                 'collection_features' => $settings->collection_features ?? [],
                 'facility_features' => $settings->facility_features ?? [],
             ],
+            'facilities_flow' => $settings->show_facilities_flow ? [
+                'title' => $settings->facilities_flow_title,
+                'description' => $settings->facilities_flow_description,
+                'steps' => $settings->facilities_flow_steps ?? [],
+            ] : null,
             'gallery' => $settings->show_gallery ? [
                 'images' => $settings->library_gallery ?? [],
                 'auto_slide' => $settings->gallery_auto_slide,
@@ -312,6 +323,11 @@ class AlkaproLibraryController extends Controller
                 'collection_features' => AlkaproLibrarySettings::getDefaultCollectionFeatures(),
                 'facility_features' => AlkaproLibrarySettings::getDefaultFacilityFeatures(),
             ],
+            'facilities_flow' => [
+                'title' => 'Alur Penggunaan Fasilitas Perpustakaan',
+                'description' => 'Panduan langkah demi langkah untuk menggunakan fasilitas perpustakaan dengan optimal',
+                'steps' => AlkaproLibrarySettings::getDefaultFacilitiesFlowSteps(),
+            ],
             'display_settings' => [
                 'show_gallery' => true,
                 'show_pamphlets' => true,
@@ -319,6 +335,7 @@ class AlkaproLibraryController extends Controller
                 'show_social_media' => true,
                 'show_programs' => true,
                 'show_additional_services' => true,
+                'show_facilities_flow' => true,
                 'show_cta_section' => true,
             ],
         ];

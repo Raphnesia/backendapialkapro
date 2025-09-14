@@ -164,6 +164,70 @@ class AlkaproLibrarySettingsResource extends Resource
                                             ->default(AlkaproLibrarySettings::getDefaultFacilityFeatures())
                                             ->helperText('Daftar fitur fasilitas perpustakaan'),
                                     ]),
+
+                                Forms\Components\Section::make('Facilities Flow Section')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('facilities_flow_title')
+                                            ->label('Judul Alur Fasilitas')
+                                            ->maxLength(255)
+                                            ->default('Alur Penggunaan Fasilitas Perpustakaan'),
+
+                                        Forms\Components\Textarea::make('facilities_flow_description')
+                                            ->label('Deskripsi Alur Fasilitas')
+                                            ->rows(3)
+                                            ->maxLength(500)
+                                            ->default('Panduan langkah demi langkah untuk menggunakan fasilitas perpustakaan dengan optimal'),
+
+                                        Forms\Components\Repeater::make('facilities_flow_steps')
+                                            ->label('Langkah-langkah Alur Fasilitas')
+                                            ->schema([
+                                                Forms\Components\TextInput::make('step_number')
+                                                    ->label('Nomor Langkah')
+                                                    ->numeric()
+                                                    ->required()
+                                                    ->minValue(1)
+                                                    ->maxValue(20),
+
+                                                Forms\Components\TextInput::make('title')
+                                                    ->label('Judul Langkah')
+                                                    ->required()
+                                                    ->maxLength(255),
+
+                                                Forms\Components\Textarea::make('description')
+                                                    ->label('Deskripsi Langkah')
+                                                    ->required()
+                                                    ->rows(2)
+                                                    ->maxLength(500),
+
+                                                Forms\Components\Select::make('icon')
+                                                    ->label('Icon')
+                                                    ->options([
+                                                        'user-plus' => 'User Plus (Registrasi)',
+                                                        'map-pin' => 'Map Pin (Lokasi)',
+                                                        'search' => 'Search (Pencarian)',
+                                                        'wifi' => 'WiFi (Internet)',
+                                                        'book-open' => 'Book Open (Buku)',
+                                                        'check-circle' => 'Check Circle (Selesai)',
+                                                        'monitor' => 'Monitor (Komputer)',
+                                                        'users' => 'Users (Kelompok)',
+                                                        'file-text' => 'File Text (Dokumen)',
+                                                        'clock' => 'Clock (Waktu)',
+                                                        'key' => 'Key (Akses)',
+                                                        'shield-check' => 'Shield Check (Verifikasi)',
+                                                    ])
+                                                    ->default('user-plus')
+                                                    ->required(),
+                                            ])
+                                            ->defaultItems(6)
+                                            ->default(AlkaproLibrarySettings::getDefaultFacilitiesFlowSteps())
+                                            ->collapsible()
+                                            ->reorderable()
+                                            ->helperText('Daftar langkah-langkah penggunaan fasilitas perpustakaan'),
+
+                                        Forms\Components\Toggle::make('show_facilities_flow')
+                                            ->label('Tampilkan Alur Fasilitas')
+                                            ->default(true),
+                                    ]),
                             ]),
 
                         // Tab 3: Gallery & Media

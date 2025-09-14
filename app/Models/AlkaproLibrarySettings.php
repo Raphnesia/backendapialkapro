@@ -66,6 +66,11 @@ class AlkaproLibrarySettings extends Model
         'collection_features',
         'facility_features',
         
+        // Library Facilities Flow Section
+        'facilities_flow_title',
+        'facilities_flow_description',
+        'facilities_flow_steps',
+        
         // Programs Section
         'programs_title',
         'programs_description',
@@ -94,6 +99,7 @@ class AlkaproLibrarySettings extends Model
         'show_programs',
         'show_additional_services',
         'show_cta_section',
+        'show_facilities_flow',
         
         // Status
         'is_active'
@@ -105,6 +111,7 @@ class AlkaproLibrarySettings extends Model
         'collection_features' => 'array',
         'facility_features' => 'array',
         'additional_services' => 'array',
+        'facilities_flow_steps' => 'array',
         'gallery_auto_slide' => 'boolean',
         'pamphlet_auto_slide' => 'boolean',
         'show_gallery' => 'boolean',
@@ -114,6 +121,7 @@ class AlkaproLibrarySettings extends Model
         'show_programs' => 'boolean',
         'show_additional_services' => 'boolean',
         'show_cta_section' => 'boolean',
+        'show_facilities_flow' => 'boolean',
         'is_active' => 'boolean',
         'gallery_slide_interval' => 'integer',
         'pamphlet_slide_interval' => 'integer'
@@ -310,6 +318,49 @@ class AlkaproLibrarySettings extends Model
                 'title' => 'Layanan Fotokopi & Print',
                 'description' => 'Fasilitas fotokopi dan print untuk kebutuhan akademik siswa dengan harga terjangkau',
                 'icon' => 'file-text'
+            ]
+        ];
+    }
+
+    // Helper method untuk mendapatkan default facilities flow steps
+    public static function getDefaultFacilitiesFlowSteps()
+    {
+        return [
+            [
+                'step' => 1,
+                'title' => 'Registrasi & Kartu Anggota',
+                'description' => 'Daftarkan diri sebagai anggota perpustakaan dan dapatkan kartu anggota untuk akses penuh ke semua fasilitas',
+                'icon' => 'user-plus'
+            ],
+            [
+                'step' => 2,
+                'title' => 'Pencarian Koleksi',
+                'description' => 'Gunakan katalog digital atau minta bantuan pustakawan untuk menemukan buku dan materi yang Anda butuhkan',
+                'icon' => 'search'
+            ],
+            [
+                'step' => 3,
+                'title' => 'Peminjaman Buku',
+                'description' => 'Pinjam buku dengan menunjukkan kartu anggota. Catat tanggal pengembalian untuk menghindari denda',
+                'icon' => 'book-open'
+            ],
+            [
+                'step' => 4,
+                'title' => 'Area Baca',
+                'description' => 'Nikmati area baca yang nyaman dan tenang. Tersedia meja belajar individual dan ruang diskusi kelompok',
+                'icon' => 'home'
+            ],
+            [
+                'step' => 5,
+                'title' => 'Pengembalian',
+                'description' => 'Kembalikan buku tepat waktu di meja sirkulasi atau gunakan drop box yang tersedia',
+                'icon' => 'refresh-cw'
+            ],
+            [
+                'step' => 6,
+                'title' => 'Layanan Tambahan',
+                'description' => 'Manfaatkan layanan fotokopi, print, akses internet, dan konsultasi referensi dengan pustakawan',
+                'icon' => 'plus-circle'
             ]
         ];
     }
