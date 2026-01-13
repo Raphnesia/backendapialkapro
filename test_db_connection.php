@@ -4,8 +4,13 @@
 
 try {
     $host = "localhost"; // Change this to your DB host
+<<<<<<< HEAD
     $dbname = "alkaproi_smpalk"; // Change this to your DB name
     $username = "alkaproi_smpalk"; // Change this to your DB username
+=======
+    $dbname = "raphnesi_smpalk"; // Change this to your DB name
+    $username = "raphnesi_smpalk"; // Change this to your DB username
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
     $password = "YOUR_PASSWORD_HERE"; // Change this to your actual password
     
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

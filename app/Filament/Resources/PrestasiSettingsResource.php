@@ -93,6 +93,7 @@ class PrestasiSettingsResource extends Resource
                     ->label('Warna Teks Floating')
                     ->badge(),
                 Tables\Columns\TextColumn::make('feature_lists')
+<<<<<<< HEAD
     ->label('Feature Lists')
     ->formatStateUsing(function ($state): string {
         return is_array($state) ? count($state) . ' item(s)' : '1 item(s)';
@@ -101,6 +102,14 @@ class PrestasiSettingsResource extends Resource
         $state = $column->getState();
         return is_array($state) ? implode(', ', $state) : (string) $state;
     }),
+=======
+                    ->label('Feature Lists')
+                    ->formatStateUsing(fn (array $state): string => count($state) . ' item(s)')
+                    ->tooltip(function (Tables\Columns\TextColumn $column): ?string {
+                        $state = $column->getState();
+                        return is_array($state) ? implode(', ', $state) : '';
+                    }),
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Terakhir Update')
                     ->dateTime('d M Y H:i')

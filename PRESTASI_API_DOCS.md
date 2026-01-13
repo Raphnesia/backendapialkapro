@@ -2,7 +2,11 @@
 
 ## 📍 Base URL
 ```
+<<<<<<< HEAD
 https://api.alkapro.id/api/v1
+=======
+https://api.raphnesia.my.id/api/v1
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ## 🔐 Authentication
@@ -30,7 +34,11 @@ Mengambil **SEMUA** data Prestasi dalam satu request (recommended untuk halaman 
   "right_image": {
     "id": 1,
     "title": "Juara 1 Olimpiade Sains Nasional",
+<<<<<<< HEAD
     "featured_image": "https://api.alkapro.id/storage/1/olimpiade.jpg",
+=======
+    "featured_image": "https://api.raphnesia.my.id/storage/1/olimpiade.jpg",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
     "excerpt": "Siswa SMP Muhammadiyah Al Kautsar berhasil...",
     "published_at": "2024-12-19T10:00:00.000000Z"
   },
@@ -38,7 +46,11 @@ Mengambil **SEMUA** data Prestasi dalam satu request (recommended untuk halaman 
     {
       "id": 1,
       "title": "Juara 1 Lomba Matematika",
+<<<<<<< HEAD
       "featured_image": "https://api.alkapro.id/storage/1/matematika.jpg",
+=======
+      "featured_image": "https://api.raphnesia.my.id/storage/1/matematika.jpg",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
       "excerpt": "Siswa berhasil meraih juara...",
       "published_at": "2024-12-19T10:00:00.000000Z"
     }
@@ -47,7 +59,11 @@ Mengambil **SEMUA** data Prestasi dalam satu request (recommended untuk halaman 
     {
       "id": 2,
       "title": "Ujian Tahfidz Sekali Duduk",
+<<<<<<< HEAD
       "featured_image": "https://api.alkapro.id/storage/2/tahfidz.jpg",
+=======
+      "featured_image": "https://api.raphnesia.my.id/storage/2/tahfidz.jpg",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
       "excerpt": "Siswa berhasil menghafal 30 juz...",
       "published_at": "2024-12-19T10:00:00.000000Z"
     }
@@ -427,6 +443,7 @@ const { ref, inView } = useInView({
 ### **1. Test API Endpoints**
 ```bash
 # Test settings
+<<<<<<< HEAD
 curl "https://api.alkapro.id/api/v1/prestasi/settings"
 
 # Test complete data
@@ -436,6 +453,17 @@ curl "https://api.alkapro.id/api/v1/prestasi"
 curl "https://api.alkapro.id/api/v1/prestasi/right-image"
 curl "https://api.alkapro.id/api/v1/prestasi/list-prestasi"
 curl "https://api.alkapro.id/api/v1/prestasi/list-tahfidz"
+=======
+curl "https://api.raphnesia.my.id/api/v1/prestasi/settings"
+
+# Test complete data
+curl "https://api.raphnesia.my.id/api/v1/prestasi"
+
+# Test individual sections
+curl "https://api.raphnesia.my.id/api/v1/prestasi/right-image"
+curl "https://api.raphnesia.my.id/api/v1/prestasi/list-prestasi"
+curl "https://api.raphnesia.my.id/api/v1/prestasi/list-tahfidz"
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### **2. Error Handling**
@@ -484,9 +512,15 @@ const handleError = (error: any) => {
 
 ## 🔗 **LINKS & REFERENCES**
 
+<<<<<<< HEAD
 - **API Base**: `https://api.alkapro.id/api/v1`
 - **Admin Panel**: `https://api.alkapro.id/admin`
 - **Git Repository**: `alkaproia/backendapischool`
+=======
+- **API Base**: `https://api.raphnesia.my.id/api/v1`
+- **Admin Panel**: `https://api.raphnesia.my.id/admin`
+- **Git Repository**: `Raphnesia/backendapischool`
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 - **Main Docs**: `FRONTEND_API_DOCS.md`
 
 ---

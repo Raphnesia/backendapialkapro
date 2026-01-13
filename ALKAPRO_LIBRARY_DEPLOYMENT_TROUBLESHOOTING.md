@@ -12,11 +12,19 @@ After thorough investigation, the issue is **database connectivity failure**, no
 - ✅ Filament resource is properly configured
 - ✅ Model relationships are correct
 - ✅ Migration file is properly structured
+<<<<<<< HEAD
 - ❌ **Database connection is failing** (Access denied for user 'alkaproi_smpalk'@'localhost')
 
 ## The Problem
 ```
 SQLSTATE[HY000] [1045] Access denied for user 'alkaproi_smpalk'@'localhost' (using password: YES)
+=======
+- ❌ **Database connection is failing** (Access denied for user 'raphnesi_smpalk'@'localhost')
+
+## The Problem
+```
+SQLSTATE[HY000] [1045] Access denied for user 'raphnesi_smpalk'@'localhost' (using password: YES)
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 This error prevents:
@@ -34,8 +42,13 @@ Check and update your `.env` file with correct database credentials:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
+<<<<<<< HEAD
 DB_DATABASE=alkaproi_smpalk
 DB_USERNAME=alkaproi_smpalk
+=======
+DB_DATABASE=raphnesi_smpalk
+DB_USERNAME=raphnesi_smpalk
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 DB_PASSWORD=your_actual_password_here
 ```
 

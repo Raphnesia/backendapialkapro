@@ -21,7 +21,11 @@ return [
 
     'allowed_origins' => [
         'http://localhost:3000',           // Development
+<<<<<<< HEAD
         'https://alkapro.id',         // Production Frontend
+=======
+        'https://raphnesia.my.id',         // Production Frontend
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
         'https://*.vercel.app',            // Vercel preview
         'https://vercel.app',              // Vercel main
     ],

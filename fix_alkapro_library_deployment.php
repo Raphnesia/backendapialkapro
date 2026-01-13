@@ -3,7 +3,11 @@
 echo "=== ALKAPRO LIBRARY DEPLOYMENT FIX ===\n\n";
 
 echo "ISSUE IDENTIFIED: Database connection failure\n";
+<<<<<<< HEAD
 echo "Error: Access denied for user 'alkaproi_smpalk'@'localhost'\n\n";
+=======
+echo "Error: Access denied for user 'raphnesi_smpalk'@'localhost'\n\n";
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 echo "STEP-BY-STEP SOLUTION:\n\n";
 
@@ -21,8 +25,13 @@ echo "   Make sure these settings are correct:\n";
 echo "   DB_CONNECTION=mysql\n";
 echo "   DB_HOST=127.0.0.1 (or your database host)\n";
 echo "   DB_PORT=3306\n";
+<<<<<<< HEAD
 echo "   DB_DATABASE=alkaproi_smpalk (or correct database name)\n";
 echo "   DB_USERNAME=alkaproi_smpalk (or correct username)\n";
+=======
+echo "   DB_DATABASE=raphnesi_smpalk (or correct database name)\n";
+echo "   DB_USERNAME=raphnesi_smpalk (or correct username)\n";
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 echo "   DB_PASSWORD=your_actual_password\n\n";
 
 echo "4. COMMANDS TO RUN AFTER FIXING DATABASE:\n";
@@ -78,8 +87,13 @@ $db_test_content = '<?php
 
 try {
     $host = "localhost"; // Change this to your DB host
+<<<<<<< HEAD
     $dbname = "alkaproi_smpalk"; // Change this to your DB name
     $username = "alkaproi_smpalk"; // Change this to your DB username
+=======
+    $dbname = "raphnesi_smpalk"; // Change this to your DB name
+    $username = "raphnesi_smpalk"; // Change this to your DB username
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
     $password = "YOUR_PASSWORD_HERE"; // Change this to your actual password
     
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

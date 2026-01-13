@@ -23,7 +23,11 @@ APP_NAME="SMP Al Kautsar API"
 APP_ENV=production
 APP_KEY=base64:YOUR_APP_KEY_HERE
 APP_DEBUG=false
+<<<<<<< HEAD
 APP_URL=https://api.alkapro.id
+=======
+APP_URL=https://api.raphnesia.my.id
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 DB_CONNECTION=mysql
 DB_HOST=localhost
@@ -32,10 +36,17 @@ DB_DATABASE=YOUR_DATABASE_NAME
 DB_USERNAME=YOUR_DATABASE_USER
 DB_PASSWORD=YOUR_DATABASE_PASSWORD
 
+<<<<<<< HEAD
 SESSION_DOMAIN=.alkapro.id
 SESSION_SECURE_COOKIE=true
 
 CORS_ALLOWED_ORIGINS=https://alkapro.id,https://*.vercel.app
+=======
+SESSION_DOMAIN=.raphnesia.my.id
+SESSION_SECURE_COOKIE=true
+
+CORS_ALLOWED_ORIGINS=https://raphnesia.my.id,https://*.vercel.app
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### **B. .htaccess untuk Subdomain**
@@ -157,6 +168,7 @@ composer install --optimize-autoloader --no-dev
 ### **1. Test API Endpoints**
 ```bash
 # Test Info PPDB API
+<<<<<<< HEAD
 curl https://api.alkapro.id/api/info-ppdb/settings
 
 # Test Profil API
@@ -164,25 +176,49 @@ curl https://api.alkapro.id/api/profil/settings
 
 # Test Program Khusus API
 curl https://api.alkapro.id/api/program-khusus
+=======
+curl https://api.raphnesia.my.id/api/info-ppdb/settings
+
+# Test Profil API
+curl https://api.raphnesia.my.id/api/profil/settings
+
+# Test Program Khusus API
+curl https://api.raphnesia.my.id/api/program-khusus
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### **2. Test File Storage**
 ```bash
 # Test storage access
+<<<<<<< HEAD
 curl https://api.alkapro.id/storage/ppdb/banners/test.jpg
 
 # Test admin panel
 curl https://api.alkapro.id/admin
+=======
+curl https://api.raphnesia.my.id/storage/ppdb/banners/test.jpg
+
+# Test admin panel
+curl https://api.raphnesia.my.id/admin
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### **3. Test CORS**
 ```bash
 # Test dari frontend domain
+<<<<<<< HEAD
 curl -H "Origin: https://alkapro.id" \
      -H "Access-Control-Request-Method: GET" \
      -H "Access-Control-Request-Headers: X-Requested-With" \
      -X OPTIONS \
      https://api.alkapro.id/api/info-ppdb/settings
+=======
+curl -H "Origin: https://raphnesia.my.id" \
+     -H "Access-Control-Request-Method: GET" \
+     -H "Access-Control-Request-Headers: X-Requested-With" \
+     -X OPTIONS \
+     https://api.raphnesia.my.id/api/info-ppdb/settings
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ---
@@ -236,12 +272,20 @@ cat .env | grep DB_
 
 ### **URL Admin Panel**
 ```
+<<<<<<< HEAD
 https://api.alkapro.id/admin
+=======
+https://api.raphnesia.my.id/admin
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### **Default Credentials**
 ```
+<<<<<<< HEAD
 Email: admin@alkapro.id
+=======
+Email: admin@raphnesia.my.id
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 Password: (sesuai yang di-set di seeder)
 ```
 
@@ -263,10 +307,17 @@ Password: (sesuai yang di-set di seeder)
 
 ## 🎯 **TARGET DEPLOYMENT**
 
+<<<<<<< HEAD
 **Frontend**: `https://alkapro.id` (Vercel)  
 **Backend**: `https://api.alkapro.id` (Hosting)  
 **Admin Panel**: `https://api.alkapro.id/admin`  
 **API Base**: `https://api.alkapro.id/api/*`  
+=======
+**Frontend**: `https://raphnesia.my.id` (Vercel)  
+**Backend**: `https://api.raphnesia.my.id` (Hosting)  
+**Admin Panel**: `https://api.raphnesia.my.id/admin`  
+**API Base**: `https://api.raphnesia.my.id/api/*`  
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 ---
 

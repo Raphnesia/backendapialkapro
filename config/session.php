@@ -154,7 +154,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'domain' => env('SESSION_DOMAIN', '.alkapro.id'),
+=======
+    'domain' => env('SESSION_DOMAIN', '.raphnesia.my.id'),
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
     /*
     |--------------------------------------------------------------------------

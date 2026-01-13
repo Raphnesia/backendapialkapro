@@ -19,7 +19,11 @@ Panduan lengkap implementasi frontend untuk sistem Alkapro Library yang terinteg
 ### Base Configuration
 ```typescript
 // Production API Base URL
+<<<<<<< HEAD
 const API_BASE = 'https://api.alkapro.id/api/v1'
+=======
+const API_BASE = 'https://api.raphnesia.my.id/api/v1'
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 // Available Endpoints (All Working)
 const ALKAPRO_ENDPOINTS = {

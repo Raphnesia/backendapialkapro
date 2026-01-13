@@ -1,5 +1,9 @@
 # 🚀 PRODUCTION CONFIGURATION GUIDE
+<<<<<<< HEAD
 # Konfigurasi untuk Deploy ke Hosting dengan Domain alkapro.id
+=======
+# Konfigurasi untuk Deploy ke Hosting dengan Domain raphnesia.my.id
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 ## 📁 File .env untuk Production
 
@@ -10,7 +14,11 @@ APP_NAME="SMP Al Kautsar API"
 APP_ENV=production
 APP_KEY=base64:your-app-key-here
 APP_DEBUG=false
+<<<<<<< HEAD
 APP_URL=https://api.alkapro.id
+=======
+APP_URL=https://api.raphnesia.my.id
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 LOG_CHANNEL=stack
 LOG_DEPRECATIONS_CHANNEL=null
@@ -19,8 +27,13 @@ LOG_LEVEL=error
 DB_CONNECTION=mysql
 DB_HOST=localhost
 DB_PORT=3306
+<<<<<<< HEAD
 DB_DATABASE=alkaproi_smpalk
 DB_USERNAME=alkaproi_smpalk
+=======
+DB_DATABASE=raphnesi_smpalk
+DB_USERNAME=raphnesi_smpalk
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 DB_PASSWORD=your_database_password
 
 BROADCAST_DRIVER=log
@@ -70,7 +83,11 @@ VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 LIVEWIRE_UPLOAD_DISK=local
 
 # CORS Configuration
+<<<<<<< HEAD
 CORS_ALLOWED_ORIGINS=https://alkapro.id,http://localhost:3000
+=======
+CORS_ALLOWED_ORIGINS=https://raphnesia.my.id,http://localhost:3000
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ## 🔑 Generate App Key
@@ -85,7 +102,11 @@ php artisan key:generate
 
 File `config/cors.php` sudah diupdate untuk allow:
 - `http://localhost:3000` (Development)
+<<<<<<< HEAD
 - `https://alkapro.id` (Production)
+=======
+- `https://raphnesia.my.id` (Production)
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 - `https://*.vercel.app` (Vercel preview)
 
 ## 📱 Next.js Frontend Configuration
@@ -99,7 +120,11 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api/v1
 
 **Production (.env.production):**
 ```env
+<<<<<<< HEAD
 NEXT_PUBLIC_API_BASE_URL=https://api.alkapro.id/api/v1
+=======
+NEXT_PUBLIC_API_BASE_URL=https://api.raphnesia.my.id/api/v1
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### API Utils
@@ -167,7 +192,11 @@ export const fetchInfoPPDB = async () => {
 - [ ] Update environment variables
 - [ ] Update API utils
 - [ ] Deploy ke Vercel
+<<<<<<< HEAD
 - [ ] Set custom domain `alkapro.id`
+=======
+- [ ] Set custom domain `raphnesia.my.id`
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 - [ ] Test API connection
 
 ## 🔍 Testing
@@ -178,13 +207,21 @@ export const fetchInfoPPDB = async () => {
 curl http://localhost:8000/api/v1/profil/settings
 
 # Test dari production
+<<<<<<< HEAD
 curl https://api.alkapro.id/api/v1/profil/settings
+=======
+curl https://api.raphnesia.my.id/api/v1/profil/settings
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### Test CORS
 ```javascript
 // Test dari browser console
+<<<<<<< HEAD
 fetch('https://api.alkapro.id/api/v1/profil/settings')
+=======
+fetch('https://api.raphnesia.my.id/api/v1/profil/settings')
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error('CORS Error:', error));

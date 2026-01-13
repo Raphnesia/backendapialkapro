@@ -1,8 +1,13 @@
 # 🚀 **Panduan Deployment Lengkap**
 
 ## 📋 **Overview**
+<<<<<<< HEAD
 - **Frontend (Next.js)**: Deploy ke Vercel dengan domain `alkapro.id`
 - **Backend (Laravel)**: Deploy ke hosting dengan subdomain `api.alkapro.id`
+=======
+- **Frontend (Next.js)**: Deploy ke Vercel dengan domain `raphnesia.my.id`
+- **Backend (Laravel)**: Deploy ke hosting dengan subdomain `api.raphnesia.my.id`
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 ---
 
@@ -22,7 +27,11 @@ vercel --prod
 
 ### **Step 2: Konfigurasi Domain**
 1. **Buka Vercel Dashboard** → Project Settings → Domains
+<<<<<<< HEAD
 2. **Add Domain**: `alkapro.id`
+=======
+2. **Add Domain**: `raphnesia.my.id`
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 3. **Verifikasi DNS** dengan menambahkan record:
    ```
    Type: CNAME
@@ -33,9 +42,15 @@ vercel --prod
 ### **Step 3: Environment Variables di Vercel**
 Buka **Project Settings** → **Environment Variables**:
 ```
+<<<<<<< HEAD
 NEXT_PUBLIC_API_URL=https://api.alkapro.id
 NEXT_PUBLIC_APP_URL=https://alkapro.id
 NEXT_PUBLIC_STORAGE_URL=https://api.alkapro.id/storage
+=======
+NEXT_PUBLIC_API_URL=https://api.raphnesia.my.id
+NEXT_PUBLIC_APP_URL=https://raphnesia.my.id
+NEXT_PUBLIC_STORAGE_URL=https://api.raphnesia.my.id/storage
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### **Step 4: Build & Deploy**
@@ -55,7 +70,11 @@ vercel --prod
 1. **Buka cPanel** → **Subdomains**
 2. **Create Subdomain**:
    - Subdomain: `api`
+<<<<<<< HEAD
    - Domain: `alkapro.id`
+=======
+   - Domain: `raphnesia.my.id`
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
    - Document Root: `public_html/api`
 
 ### **Step 2: Upload Laravel Files**
@@ -81,7 +100,11 @@ APP_NAME="SMP Al Kautsar API"
 APP_ENV=production
 APP_KEY=base64:YOUR_APP_KEY_HERE
 APP_DEBUG=false
+<<<<<<< HEAD
 APP_URL=https://api.alkapro.id
+=======
+APP_URL=https://api.raphnesia.my.id
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 LOG_CHANNEL=stack
 LOG_DEPRECATIONS_CHANNEL=null
@@ -190,7 +213,11 @@ return [
     'allowed_methods' => ['*'],
     'allowed_origins' => [
         'http://localhost:3000',           // Development
+<<<<<<< HEAD
         'https://alkapro.id',         // Production Frontend
+=======
+        'https://raphnesia.my.id',         // Production Frontend
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
         'https://*.vercel.app',            // Vercel preview
     ],
     'allowed_origins_patterns' => [],
@@ -246,19 +273,33 @@ return [
 ### **Test Frontend**
 ```bash
 # Test API connection
+<<<<<<< HEAD
 curl https://alkapro.id/api/info-ppdb/settings
 
 # Test image loading
 curl https://alkapro.id/storage/ppdb/banners/test.jpg
+=======
+curl https://raphnesia.my.id/api/info-ppdb/settings
+
+# Test image loading
+curl https://raphnesia.my.id/storage/ppdb/banners/test.jpg
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ### **Test Backend**
 ```bash
 # Test API endpoint
+<<<<<<< HEAD
 curl https://api.alkapro.id/api/info-ppdb/settings
 
 # Test storage
 curl https://api.alkapro.id/storage/ppdb/banners/test.jpg
+=======
+curl https://api.raphnesia.my.id/api/info-ppdb/settings
+
+# Test storage
+curl https://api.raphnesia.my.id/storage/ppdb/banners/test.jpg
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ---
@@ -324,4 +365,8 @@ Jika ada masalah:
 
 ---
 
+<<<<<<< HEAD
 **🎯 Target: Frontend di `alkapro.id`, Backend di `api.alkapro.id`**
+=======
+**🎯 Target: Frontend di `raphnesia.my.id`, Backend di `api.raphnesia.my.id`**
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb

@@ -2,7 +2,11 @@
 
 ## Base URL
 ```
+<<<<<<< HEAD
 https://api.alkapro.id/api/v1
+=======
+https://api.raphnesia.my.id/api/v1
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ## Authentication
@@ -23,8 +27,13 @@ Mengambil semua data Tapak Suci (pengurus, settings, content)
   "settings": {
     "title": "Tapak Suci",
     "subtitle": "Pencak Silat Muhammadiyah",
+<<<<<<< HEAD
     "banner_desktop": "https://api.alkapro.id/storage/...",
     "banner_mobile": "https://api.alkapro.id/storage/...",
+=======
+    "banner_desktop": "https://api.raphnesia.my.id/storage/...",
+    "banner_mobile": "https://api.raphnesia.my.id/storage/...",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
     "title_panel_bg_color": "#1e40af",
     "subtitle_panel_bg_color": "#3b82f6",
     "mobile_panel_bg_color": "#1e40af"
@@ -34,7 +43,11 @@ Mengambil semua data Tapak Suci (pengurus, settings, content)
       "id": 1,
       "position": "Ketua",
       "name": "Nama Ketua",
+<<<<<<< HEAD
       "photo": "https://api.alkapro.id/storage/...",
+=======
+      "photo": "https://api.raphnesia.my.id/storage/...",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
       "kelas": "IX A",
       "description": "Deskripsi ketua",
       "order_index": 1,
@@ -86,8 +99,13 @@ Mengambil semua data Hisbul Wathan (pengurus, settings, content)
   "settings": {
     "title": "Hisbul Wathan",
     "subtitle": "Kepanduan Muhammadiyah",
+<<<<<<< HEAD
     "banner_desktop": "https://api.alkapro.id/storage/...",
     "banner_mobile": "https://api.alkapro.id/storage/...",
+=======
+    "banner_desktop": "https://api.raphnesia.my.id/storage/...",
+    "banner_mobile": "https://api.raphnesia.my.id/storage/...",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
     "title_panel_bg_color": "#059669",
     "subtitle_panel_bg_color": "#10b981",
     "mobile_panel_bg_color": "#059669"
@@ -97,7 +115,11 @@ Mengambil semua data Hisbul Wathan (pengurus, settings, content)
       "id": 1,
       "position": "Ketua",
       "name": "Nama Ketua",
+<<<<<<< HEAD
       "photo": "https://api.alkapro.id/storage/...",
+=======
+      "photo": "https://api.raphnesia.my.id/storage/...",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
       "kelas": "IX A",
       "description": "Deskripsi ketua",
       "order_index": 1,
@@ -158,7 +180,11 @@ Mengambil semua data Prestasi (settings, right image, list prestasi, list tahfid
   "right_image": {
     "id": 1,
     "title": "Judul Berita Prestasi",
+<<<<<<< HEAD
     "featured_image": "https://api.alkapro.id/storage/...",
+=======
+    "featured_image": "https://api.raphnesia.my.id/storage/...",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
     "excerpt": "Ringkasan berita prestasi...",
     "published_at": "2024-12-19T10:00:00.000000Z"
   },
@@ -166,7 +192,11 @@ Mengambil semua data Prestasi (settings, right image, list prestasi, list tahfid
     {
       "id": 1,
       "title": "Juara 1 Lomba Matematika",
+<<<<<<< HEAD
       "featured_image": "https://api.alkapro.id/storage/...",
+=======
+      "featured_image": "https://api.raphnesia.my.id/storage/...",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
       "excerpt": "Siswa berhasil meraih...",
       "published_at": "2024-12-19T10:00:00.000000Z"
     }
@@ -175,7 +205,11 @@ Mengambil semua data Prestasi (settings, right image, list prestasi, list tahfid
     {
       "id": 2,
       "title": "Ujian Tahfidz Sekali Duduk",
+<<<<<<< HEAD
       "featured_image": "https://api.alkapro.id/storage/...",
+=======
+      "featured_image": "https://api.raphnesia.my.id/storage/...",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
       "excerpt": "Siswa berhasil menghafal...",
       "published_at": "2024-12-19T10:00:00.000000Z"
     }
@@ -218,7 +252,11 @@ Mengambil semua berita yang dipublish
       "title": "Judul Berita",
       "excerpt": "Ringkasan berita...",
       "content": "Konten lengkap berita...",
+<<<<<<< HEAD
       "featured_image": "https://api.alkapro.id/storage/...",
+=======
+      "featured_image": "https://api.raphnesia.my.id/storage/...",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
       "category": "achievement",
       "tags": ["prestasi", "akademik"],
       "is_published": true,
@@ -530,7 +568,11 @@ export default function TapakSuciPage() {
 
 ```bash
 # .env.local
+<<<<<<< HEAD
 NEXT_PUBLIC_API_BASE=https://api.alkapro.id/api/v1
+=======
+NEXT_PUBLIC_API_BASE=https://api.raphnesia.my.id/api/v1
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 ```
 
 ---
@@ -558,7 +600,11 @@ Semua endpoint mengembalikan response dengan format:
 
 ## Notes
 
+<<<<<<< HEAD
 1. **Image URLs**: Semua gambar menggunakan base URL `https://api.alkapro.id/storage/`
+=======
+1. **Image URLs**: Semua gambar menggunakan base URL `https://api.raphnesia.my.id/storage/`
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 2. **Colors**: Semua warna dalam format HEX (#RRGGBB)
 3. **Dates**: Format ISO 8601 (YYYY-MM-DDTHH:mm:ss.ssssssZ)
 4. **Pagination**: Hanya untuk endpoint `/posts` dengan parameter `page`

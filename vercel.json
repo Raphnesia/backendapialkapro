@@ -8,9 +8,15 @@
     }
   ],
   "env": {
+<<<<<<< HEAD
     "NEXT_PUBLIC_API_URL": "https://api.alkapro.id",
     "NEXT_PUBLIC_APP_URL": "https://alkapro.id",
     "NEXT_PUBLIC_STORAGE_URL": "https://api.alkapro.id/storage"
+=======
+    "NEXT_PUBLIC_API_URL": "https://api.raphnesia.my.id",
+    "NEXT_PUBLIC_APP_URL": "https://raphnesia.my.id",
+    "NEXT_PUBLIC_STORAGE_URL": "https://api.raphnesia.my.id/storage"
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
   },
   "functions": {
     "app/api/**/*.js": {
@@ -39,14 +45,22 @@
   "redirects": [
     {
       "source": "/api/:path*",
+<<<<<<< HEAD
       "destination": "https://api.alkapro.id/api/:path*",
+=======
+      "destination": "https://api.raphnesia.my.id/api/:path*",
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
       "permanent": true
     }
   ],
   "rewrites": [
     {
       "source": "/storage/:path*",
+<<<<<<< HEAD
       "destination": "https://api.alkapro.id/storage/:path*"
+=======
+      "destination": "https://api.raphnesia.my.id/storage/:path*"
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
     }
   ]
 }

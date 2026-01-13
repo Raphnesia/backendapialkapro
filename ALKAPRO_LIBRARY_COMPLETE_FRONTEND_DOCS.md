@@ -18,7 +18,11 @@ Dokumentasi lengkap implementasi frontend untuk sistem Alkapro Library yang teri
 
 ```typescript
 // Base API Configuration
+<<<<<<< HEAD
 const API_BASE = 'https://api.alkapro.id/api/v1'
+=======
+const API_BASE = 'https://api.raphnesia.my.id/api/v1'
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
 // Available Endpoints (All Working ✅)
 export const ALKAPRO_API = {
@@ -402,7 +406,11 @@ export function AlkaproHero({ data }: AlkaproHeroProps) {
           {data.image && (
             <div className="relative">
               <img
+<<<<<<< HEAD
                 src={data.image.startsWith('http') ? data.image : `https://api.alkapro.id${data.image}`}
+=======
+                src={data.image.startsWith('http') ? data.image : `https://api.raphnesia.my.id${data.image}`}
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
                 alt={data.title}
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />

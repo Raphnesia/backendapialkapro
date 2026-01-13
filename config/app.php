@@ -56,7 +56,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'url' => env('APP_URL', 'https://api.alkapro.id'),
+=======
+    'url' => env('APP_URL', 'https://api.raphnesia.my.id'),
+>>>>>>> 01cf9e1bd0b1c9f8e46d93c6fdb38a4008df2eeb
 
     /*
     |--------------------------------------------------------------------------
