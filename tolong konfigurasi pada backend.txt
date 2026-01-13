@@ -1,0 +1,1443 @@
+Buatlah pada dashboard untuk mengatur bagian program-khusus baik /program-khusus dan /program-khusus/tahfidz dan /program-khusus/ict, yang terdiri dari pengaturan program-khusus untuk mengatur atau crud semua bagian page program-khusus. dan juga crud semua bagian program-khusus/tahfidz dan program-khusus/ict dan buat pengaturan untuk program-khusus/tahfidz dan program-khusus/ict (mengganti title dan subtitle, banner desktop dan mobile),
+
+INI SCRIPT FRONTEND MASING MASING NYA
+Bagian 1 /Program-Khusus
+'use client'
+
+import React from 'react'
+import { Header } from '@/components/Header'
+import Image from 'next/image'
+import Link from 'next/link'
+
+const ProgramKhususPage = () => {
+  const programs = [
+    {
+      id: 'tahfidz',
+      title: 'Program Tahfidz Al-Quran',
+      subtitle: 'Membentuk generasi Qurani melalui hafalan Al-Quran dengan metode pembelajaran yang menyenangkan dan efektif.',
+      description: 'Program Tahfidz Al-Quran di sekolah kami menggunakan metode pembelajaran yang telah terbukti efektif dalam membantu siswa menghafal Al-Quran dengan mudah dan menyenangkan.',
+      image: '/Programkhusus/photo-1553063085-dbbf64d936ea.jpeg',
+      color: 'green',
+      href: '/program-khusus/tahfidz',
+      features: [
+        'Metode pembelajaran terbukti efektif',
+        'Ustadz dan ustadzah berpengalaman',
+        'Fasilitas ruang tahfidz yang nyaman',
+        'Lingkungan Islami yang mendukung'
+      ]
+    },
+    {
+      id: 'ict',
+      title: 'Program ICT (Information and Communication Technology)',
+      subtitle: 'Mempersiapkan siswa menghadapi era digital dengan pembelajaran teknologi informasi dan komunikasi yang komprehensif.',
+      description: 'Program ICT dirancang untuk memberikan pemahaman mendalam tentang teknologi informasi dan komunikasi yang relevan dengan perkembangan zaman.',
+      image: '/Programkhusus/html-code-on-computer-monitor-software-web-developer-programming-code-photo.jpg',
+      color: 'blue',
+      href: '/program-khusus/ict',
+      features: [
+        'Kurikulum ICT terkini',
+        'Laboratorium komputer modern',
+        'Pembelajaran praktis dan project-based',
+        'Sertifikasi internasional'
+      ]
+    }
+  ]
+
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'green':
+        return {
+          bg: 'bg-green-600',
+          hover: 'hover:bg-green-700',
+          text: 'text-green-600',
+          border: 'border-green-600'
+        }
+      case 'blue':
+        return {
+          bg: 'bg-blue-600',
+          hover: 'hover:bg-blue-700',
+          text: 'text-blue-600',
+          border: 'border-blue-600'
+        }
+      default:
+        return {
+          bg: 'bg-gray-600',
+          hover: 'hover:bg-gray-700',
+          text: 'text-gray-600',
+          border: 'border-gray-600'
+        }
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Header */}
+      <Header />
+      
+      {/* Main Content */}
+      <main className="pt-0 flex-1">
+        {/* Hero Section dengan Overlay Content */}
+        <div className="relative w-full h-screen">
+          {/* Desktop Image */}
+          <Image 
+            src="/Programkhusus/photo-1553063085-dbbf64d936ea.jpeg"
+            alt="Program Khusus"
+            fill
+            className="object-cover hidden md:block"
+            priority
+            sizes="100vw"
+            quality={75}
+          />
+          {/* Mobile Image */}
+          <Image 
+            src="/Programkhusus/6-1.png"
+            alt="Program Khusus"
+            fill
+            className="object-cover block md:hidden"
+            priority
+            sizes="100vw"
+            quality={75}
+          />
+          
+          {/* Overlay Content untuk Desktop */}
+          <div className="absolute inset-0 hidden md:flex md:items-end">
+            <div className="w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+              <div className="container mx-auto px-8 pb-16">
+                <div className="max-w-3xl">
+                  {/* Title Panel */}
+                  <div className="d-block">
+                    <div className="bg-emerald-500 d-inline-flex p-5 title-panel-scoped" style={{boxSizing: 'border-box'}}>
+                      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-0 line-clamp-2" style={{padding: '0px !important'}}>
+                        Program Khusus
+                      </h1>
+                    </div>
+                  </div>
+                  
+                  {/* Subtitle Panel */}
+                  <div className="bg-emerald-700 p-4 opacity-90 d-inline-flex rounded-b-lg" style={{boxSizing: 'border-box'}}>
+                    <p className="text-white text-sm md:text-lg font-semibold mb-0">
+                      Program unggulan SMP Muhammadiyah Al Kautsar PK Kartasura yang dirancang untuk mengembangkan potensi siswa secara optimal
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* DIV untuk Mobile */}
+        <div className="w-full bg-gradient-to-r from-emerald-600 to-blue-600 py-6 md:hidden">
+          <div className="container mx-auto px-4">
+            <div className="d-block">
+              {/* Title Panel untuk Mobile */}
+              <div className="bg-emerald-700 d-inline-flex p-4 title-panel-scoped">
+                <h1 className="text-xl font-bold text-white mb-0" style={{padding: '0px !important'}}>
+                  Program Khusus
+                </h1>
+              </div>
+              
+              {/* Subtitle Panel untuk Mobile */}
+              <div className="bg-emerald-800 mb-0 p-4 opacity-90 d-inline-flex subtitle-panel-scoped">
+                <div>
+                  <p className="text-white text-sm font-semibold mb-0">
+                    Program unggulan SMP Muhammadiyah Al Kautsar PK Kartasura yang dirancang untuk mengembangkan potensi siswa secara optimal
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Programs Overview */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Program Unggulan Kami
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Kami menawarkan dua program khusus yang dirancang untuk mengembangkan potensi akademik dan spiritual siswa
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+              {programs.map((program) => {
+                const colors = getColorClasses(program.color)
+                return (
+                  <div 
+                    key={program.id}
+                    className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                  >
+                    {/* Program Image */}
+                    <div className="relative h-64">
+                      <Image
+                        src={program.image}
+                        alt={program.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-2xl font-bold text-white mb-2">
+                          {program.title}
+                        </h3>
+                        <p className="text-white/90 text-sm">
+                          {program.subtitle}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Program Content */}
+                    <div className="p-6">
+                      <p className="text-gray-600 mb-6 leading-relaxed">
+                        {program.description}
+                      </p>
+
+                      {/* Features */}
+                      <div className="mb-6">
+                        <h4 className={`font-semibold ${colors.text} mb-3`}>
+                          Keunggulan Program:
+                        </h4>
+                        <ul className="space-y-2">
+                          {program.features.map((feature, index) => (
+                            <li key={index} className="flex items-start">
+                              <div className={`w-2 h-2 rounded-full ${colors.bg} mt-2 mr-3 flex-shrink-0`}></div>
+                              <span className="text-gray-700 text-sm">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* CTA Button */}
+                      <Link 
+                        href={program.href}
+                        className={`inline-block w-full text-center py-3 px-6 ${colors.bg} ${colors.hover} text-white font-semibold rounded-lg transition-colors duration-200`}
+                      >
+                        Pelajari Lebih Lanjut
+                      </Link>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Keunggulan Program Kami */}
+        <section className="py-20 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-['Philosopher',_sans-serif]">
+                Mengapa Memilih Program Khusus Kami?
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Program khusus kami dirancang dengan pendekatan holistik untuk mengembangkan potensi siswa secara optimal, menggabungkan keahlian akademik dengan pembentukan karakter
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Card 1: Fokus Spesifik */}
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 ring-1 ring-gray-200/50 hover:ring-emerald-500/20 transition-all duration-300 h-full">
+                  <div className="absolute top-4 right-4 opacity-10">
+                    <div className="w-12 h-12 bg-emerald-600 rounded-full"></div>
+                  </div>
+                  
+                  <div className="relative">
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-2xl">🎯</span>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-gray-800 mb-4 font-['Philosopher',_sans-serif]">
+                      Fokus Spesifik
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed">
+                      Setiap program dirancang dengan kurikulum yang fokus dan mendalam sesuai dengan bidang yang dipilih, memastikan penguasaan kompetensi secara komprehensif
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-4 left-8 right-8 h-0.5 bg-gradient-to-r from-emerald-500/20 to-transparent"></div>
+                </div>
+              </div>
+
+              {/* Card 2: Pengajar Ahli */}
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 ring-1 ring-gray-200/50 hover:ring-blue-500/20 transition-all duration-300 h-full">
+                  <div className="absolute top-4 right-4 opacity-10">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full"></div>
+                  </div>
+                  
+                  <div className="relative">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-2xl">👨‍🏫</span>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-gray-800 mb-4 font-['Philosopher',_sans-serif]">
+                      Pengajar Ahli
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed">
+                      Dibimbing oleh pengajar yang berpengalaman dan ahli di bidangnya masing-masing, dengan sertifikasi profesional dan pengalaman praktik yang luas
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-4 left-8 right-8 h-0.5 bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+                </div>
+              </div>
+
+              {/* Card 3: Prestasi Terbukti */}
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-emerald-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 ring-1 ring-gray-200/50 hover:ring-purple-500/20 transition-all duration-300 h-full">
+                  <div className="absolute top-4 right-4 opacity-10">
+                    <div className="w-12 h-12 bg-purple-600 rounded-full"></div>
+                  </div>
+                  
+                  <div className="relative">
+                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-2xl">🏆</span>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-gray-800 mb-4 font-['Philosopher',_sans-serif]">
+                      Prestasi Terbukti
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed">
+                      Program kami telah menghasilkan siswa-siswa berprestasi di berbagai kompetisi nasional dan internasional, dengan track record yang konsisten
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-4 left-8 right-8 h-0.5 bg-gradient-to-r from-purple-500/20 to-transparent"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 bg-gradient-to-r from-blue-600 to-green-600">
+          <div className="container mx-auto px-4 md:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Siap Bergabung dengan Program Khusus Kami?
+            </h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Pilih program yang sesuai dengan minat dan bakat Anda untuk mengembangkan potensi secara optimal
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/program-khusus/tahfidz"
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200"
+              >
+                Program Tahfidz
+              </Link>
+              <Link 
+                href="/program-khusus/ict"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200"
+              >
+                Program ICT
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  )
+}
+
+export default ProgramKhususPage
+
+2. Bagian program-khusus/ICT 
+'use client'
+
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Header } from '@/components/Header'
+import { BookOpen, Users, Target, Award, Star, CheckCircle, Heart, Brain, Monitor, Code, UsersRound, Lightbulb } from 'lucide-react'
+
+const ICTDetail = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      
+      <main className="">
+        {/* IMG dengan Overlay untuk Desktop */}
+        <div className="relative w-full md:h-screen h-64">
+          {/* Desktop Image */}
+          <Image 
+            src="/Programkhusus/html-code-on-computer-monitor-software-web-developer-programming-code-photo.jpg"
+            alt="Program ICT"
+            fill
+            className="object-cover hidden md:block"
+            priority
+            sizes="100vw"
+            quality={75}
+          />
+          {/* Mobile Image - Height diperkecil untuk mobile */}
+          <div className="relative w-full h-full md:hidden">
+            <Image 
+              src="/Programkhusus/google-logo-redesign-uhd-4k-wallpaper.jpg"
+              alt="Program ICT"
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+              quality={75}
+            />
+          </div>
+          
+          {/* Overlay Content untuk Desktop */}
+          <div className="absolute inset-0 hidden md:flex md:items-end">
+            <div className="w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+              <div className="container mx-auto px-8 pb-16">
+                <div className="max-w-3xl">
+                  {/* Title Panel */}
+                  <div className="block">
+                    <div className="bg-gradient-to-r from-blue-600 to-blue-800 inline-flex p-5">
+                      <h1 className="text-2xl md:text-3xl lg:text-2xl font-bold text-white mb-0 line-clamp-2" style={{ fontFamily: 'Philosopher, serif' }}>
+                        Program ICT
+                      </h1>
+                    </div>
+                  </div>
+                  
+                  {/* Subtitle Panel */}
+                  <div className="bg-gradient-to-r from-blue-700 to-blue-900 p-4 opacity-90 inline-flex rounded-b-lg">
+                    <p className="text-white text-sm md:text-lg font-semibold mb-0">
+                      Program unggulan yang memadukan pendidikan akademik dengan teknologi informasi dan komunikasi
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* DIV untuk Mobile - Tinggi disesuaikan dengan gambar */}
+        <div className="w-full bg-gradient-to-r from-blue-700 to-blue-800 py-4 md:hidden">
+          <div className="container mx-auto px-4">
+            <div className="block">
+              {/* Title Panel untuk Mobile */}
+              <div className="bg-gradient-to-r from-blue-600 to-blue-800 inline-flex p-3">
+                <h1 className="text-lg font-bold text-white mb-0" style={{ fontFamily: 'Philosopher, serif' }}>
+                  Program ICT
+                </h1>
+              </div>
+              
+              {/* Subtitle Panel untuk Mobile */}
+              <div className="bg-gradient-to-r from-blue-700 to-blue-900 mb-0 p-3 opacity-90 inline-flex">
+                <div>
+                  <p className="text-white text-xs font-semibold mb-0">
+                    Program unggulan yang memadukan pendidikan akademik dengan teknologi informasi dan komunikasi
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div id="program-details" className="container mx-auto px-4 md:px-8 py-8 md:py-20">
+          <div className="max-w-6xl mx-auto">
+            
+            {/* Introduction Section */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full px-6 py-2 mb-6">
+                <Lightbulb className="w-5 h-5 mr-2 text-blue-500" />
+                <span className="text-sm font-semibold text-gray-700">Pendidikan Digital</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight" style={{ fontFamily: 'Philosopher, serif' }}>
+                Menggabungkan <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">Akademik</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Digital</span>
+              </h2>
+              <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+                Program ICT di SMP Muhammadiyah Al Kautsar PK Kartasura dirancang khusus untuk siswa yang ingin menguasai teknologi informasi dan komunikasi sambil tetap mengikuti kurikulum akademik nasional dengan metode pembelajaran yang telah terbukti efektif.
+              </p>
+            </div>
+
+            {/* Featured Image with Modern Design */}
+            <div className="relative mb-16">
+              <div className="relative group">
+                {/* Floating background elements */}
+                <div className="absolute -top-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full blur-3xl opacity-30 animate-pulse delay-1000"></div>
+                
+                {/* Main image container */}
+                <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-sm p-4 rounded-3xl shadow-2xl border border-white/20">
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-transparent to-purple-500/20"></div>
+                    <Image
+                      src="/Programkhusus/html-code-on-computer-monitor-software-web-developer-programming-code-photo.jpg"
+                      alt="Program ICT"
+                      width={800}
+                      height={500}
+                      className="w-full h-96 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    
+                    {/* Glassmorphism overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-8 left-8 right-8">
+                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                          <h3 className="text-3xl font-bold text-white mb-3">Suasana Pembelajaran</h3>
+                          <p className="text-blue-100 text-lg">Lingkungan yang kondusif untuk belajar teknologi dengan fasilitas modern</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Corner badge */}
+                    <div className="absolute top-6 right-6 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform translate-x-20 group-hover:translate-x-0 transition-transform duration-500">
+                      Program Unggulan
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Floating icons */}
+                <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl shadow-xl flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                  <Monitor className="w-8 h-8 text-white" />
+                </div>
+                <div className="absolute -bottom-6 -left-6 w-14 h-14 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full shadow-xl flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                  <Star className="w-7 h-7 text-white" />
+                </div>
+              </div>
+            </div>
+            
+            {/* Key Points */}
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl border border-blue-100 hover:shadow-lg transition-all duration-300 group">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                    <Monitor className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Teknologi Terkini</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  Menggunakan perangkat dan software terbaru untuk pembelajaran ICT yang optimal, termasuk hardware kelas enterprise dan software development tools modern.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300 group">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                    <UsersRound className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Instruktur Ahli</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  Dibimbing oleh instruktur berpengalaman di bidang teknologi informasi dan programming dengan sertifikasi profesional dan pengalaman industri yang luas.
+                </p>
+              </div>
+            </div>
+            
+            {/* Mengapa Memilih Kami Section */}
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ fontFamily: 'Philosopher, serif' }}>
+                  Mengapa Memilih <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Program Kami</span>
+                </h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  Alasan kuat untuk memilih program ICT kami yang telah terbukti menghasilkan lulusan berkualitas
+                </p>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Image Section */}
+                <div className="relative">
+                  <div className="relative group">
+                    {/* Background glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-500 to-purple-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                    
+                    {/* 3D card container */}
+                    <div className="relative bg-white/90 backdrop-blur-sm p-4 rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
+                      <div className="relative overflow-hidden rounded-2xl">
+                        <Image
+                          src="/Programkhusus/google-logo-redesign-uhd-4k-wallpaper.jpg"
+                          alt="Metode Pembelajaran ICT"
+                          width={400}
+                          height={300}
+                          className="w-full h-80 object-cover rounded-2xl transform group-hover:scale-110 transition-transform duration-700"
+                        />
+                        
+                        {/* Modern overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-blue-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-6 left-6 right-6">
+                            <div className="bg-white/20 backdrop-blur-md rounded-xl p-4 border border-white/30">
+                              <div className="flex items-center space-x-3">
+                                <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+                                <span className="text-sm font-medium text-white">Pembelajaran Aktif</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Floating badge */}
+                        <div className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                          NEW
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Decorative elements */}
+                    <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl opacity-60 blur-xl"></div>
+                    <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full opacity-60 blur-xl"></div>
+                  </div>
+                </div>
+                
+                {/* Features Grid */}
+                <div className="grid gap-6">
+                  
+                  {/* Metode Pembelajaran */}
+                  <div className="group bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-2xl border border-blue-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <BookOpen className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors" style={{ fontFamily: 'Philosopher, serif' }}>Metode Pembelajaran</h3>
+                        <p className="text-gray-600 leading-relaxed">Menggunakan metode project-based learning dan hands-on training yang terbukti efektif dalam menguasai ICT</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Bimbingan Personal */}
+                  <div className="group bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-2xl border border-purple-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Users className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors" style={{ fontFamily: 'Philosopher, serif' }}>Bimbingan Personal</h3>
+                        <p className="text-gray-600 leading-relaxed">Setiap siswa dibimbing secara individual oleh instruktur berpengalaman di bidang teknologi</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Target Hafalan */}
+                  <div className="group bg-gradient-to-r from-cyan-50 to-teal-50 p-6 rounded-2xl border border-cyan-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Target className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-cyan-600 transition-colors" style={{ fontFamily: 'Philosopher, serif' }}>Target Skill</h3>
+                        <p className="text-gray-600 leading-relaxed">Target disesuaikan kemampuan: programming, design grafis, dan digital marketing sesuai minat siswa</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Evaluasi Berkala */}
+                  <div className="group bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-2xl border border-indigo-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Award className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors" style={{ fontFamily: 'Philosopher, serif' }}>Evaluasi Berkala</h3>
+                        <p className="text-gray-600 leading-relaxed">Sistem monitoring dan evaluasi terstruktur untuk memastikan progress optimal dalam penguasaan skill digital</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+            {/* Benefits Section */}
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 rounded-full px-6 py-2 mb-6">
+                  <Star className="w-5 h-5 mr-2 text-yellow-500" />
+                  <span className="text-sm font-semibold text-gray-700">Tiga Kompetensi Utama</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ fontFamily: 'Philosopher, serif' }}>
+                  Dampak <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Positif</span> Program ICT
+                </h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Program ICT memberikan dampak positif komprehensif melalui tiga kompetensi utama
+                </p>
+              </div>
+              
+              <div className="max-w-6xl mx-auto space-y-16">
+                
+                {/* Row 1: Programming - Image Left, Text Right */}
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="order-2 lg:order-1">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-20"></div>
+                      <div className="relative bg-white p-3 rounded-2xl shadow-xl">
+                        <Image
+                          src="/Programkhusus/html-code-on-computer-monitor-software-web-developer-programming-code-photo.jpg"
+                          alt="Programming"
+                          width={400}
+                          height={300}
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="order-1 lg:order-2 space-y-4">
+                    <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full px-4 py-2">
+                      <Code className="w-5 h-5 mr-2 text-blue-600" />
+                      <span className="text-sm font-semibold text-blue-700">Kompetensi 1</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Programming & Development</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Pembelajaran programming yang komprehensif meliputi <strong>Web Development</strong> (HTML, CSS, JavaScript), 
+                      <strong>Mobile Development</strong>, dan <strong>Database Management</strong> untuk membentuk 
+                      developer handal yang siap bersaing di era digital.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Row 2: Digital Design - Text Left, Image Right */}
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="space-y-4">
+                    <div className="inline-flex items-center bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full px-4 py-2">
+                      <Monitor className="w-5 h-5 mr-2 text-purple-600" />
+                      <span className="text-sm font-semibold text-purple-700">Kompetensi 2</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Digital Design</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Kurikulum design grafis yang terukur dan sistematis untuk membentuk kreativitas digital, 
+                      mencakup UI/UX design, graphic design, dan multimedia production.
+                    </p>
+                  </div>
+                  <div>
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-2xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-20"></div>
+                      <div className="relative bg-white p-3 rounded-2xl shadow-xl">
+                        <Image
+                          src="/Programkhusus/google-logo-redesign-uhd-4k-wallpaper.jpg"
+                          alt="Digital Design"
+                          width={400}
+                          height={300}
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Row 3: Digital Marketing - Image Left, Text Right */}
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="order-2 lg:order-1">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-20"></div>
+                      <div className="relative bg-white p-3 rounded-2xl shadow-xl">
+                        <Image
+                          src="/Programkhusus/156354-building-a-custom-wordpress-theme.png"
+                          alt="Digital Marketing"
+                          width={400}
+                          height={300}
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="order-1 lg:order-2 space-y-4">
+                    <div className="inline-flex items-center bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full px-4 py-2">
+                      <Lightbulb className="w-5 h-5 mr-2 text-cyan-600" />
+                      <span className="text-sm font-semibold text-cyan-700">Kompetensi 3</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Digital Marketing</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Pengenalan digital marketing secara intensif yang mencakup social media marketing, 
+                      SEO optimization, dan content creation untuk membekali siswa dengan skill marketing digital.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            {/* Gallery Section */}
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ fontFamily: 'Philosopher, serif' }}>
+                  Galeri <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Pembelajaran</span>
+                </h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  Suasana pembelajaran yang kondusif dan inspiratif dengan fasilitas modern
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                {[
+                  { src: '/Programkhusus/html-code-on-computer-monitor-software-web-developer-programming-code-photo.jpg', title: 'Lab Programming', desc: 'Laboratorium komputer dengan perangkat modern', color: 'from-blue-500 to-cyan-500' },
+                  { src: '/Programkhusus/google-logo-redesign-uhd-4k-wallpaper.jpg', title: 'Design Studio', desc: 'Studio design dengan software terkini', color: 'from-purple-500 to-indigo-500' },
+                  { src: '/Programkhusus/156354-building-a-custom-wordpress-theme.png', title: 'Digital Workshop', desc: 'Workshop digital dengan proyek nyata', color: 'from-cyan-500 to-teal-500' }
+                ].map((item, index) => (
+                  <div key={index} className="group relative">
+                    {/* Background glow */}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${item.color} rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`}></div>
+                    
+                    {/* Main card */}
+                    <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-white/20 transform group-hover:scale-105 transition-transform duration-500">
+                      <div className="relative overflow-hidden">
+                        <Image
+                          src={item.src}
+                          alt={item.title}
+                          width={400}
+                          height={300}
+                          className="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-700"
+                        />
+                        
+                        {/* Modern glass overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-0 left-0 right-0 p-6">
+                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                              <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                              <p className="text-blue-100 text-sm">{item.desc}</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Floating action button */}
+                        <div className="absolute top-6 right-6">
+                          <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-500">
+                            <div className={`w-8 h-8 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center`}>
+                              <Star className="w-4 h-4 text-white" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Corner decoration */}
+                    <div className={`absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-r ${item.color} rounded-full opacity-60 blur-md`}></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Call to Action Section */}
+            <div className="relative">
+              <div className="absolute inset-0 rounded-3xl transform rotate-1">
+                <Image
+                  src="/Programkhusus/156354-building-a-custom-wordpress-theme.png"
+                  alt="Background"
+                  fill
+                  className="object-cover rounded-3xl"
+                />
+                <div className="absolute inset-0 bg-black/40 rounded-3xl"></div>
+              </div>
+              <div className="relative bg-transparent rounded-3xl p-8 md:p-12 text-white text-center">
+                <div className="max-w-4xl mx-auto">
+                  <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
+                    <Monitor className="w-5 h-5 mr-2" />
+                    <span className="text-sm font-medium">Bergabung Sekarang</span>
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight" style={{ fontFamily: 'Philosopher, serif', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+                    Siap Menjadi Bagian dari <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Generasi Digital</span>?
+                  </h2>
+                  
+                  <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-3xl mx-auto" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                    Bergabunglah dengan Program ICT SMP Muhammadiyah Al Kautsar PK Kartasura dan jadilah bagian dari generasi digital yang unggul dalam skill teknologi dan berprestasi akademik. Program ini tidak hanya membentuk developer handal, tetapi juga pribadi yang kreatif dan inovatif.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link 
+                      href="/program-khusus"
+                      className="group bg-white text-blue-600 hover:bg-blue-50 font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                      <span className="flex items-center justify-center">
+                        Lihat Program Lainnya
+                        <Award className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform" />
+                      </span>
+                    </Link>
+                    <Link 
+                      href="/profil"
+                      className="group border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
+                    >
+                      <span className="flex items-center justify-center">
+                        Tentang Sekolah
+                        <Star className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform" />
+                      </span>
+                    </Link>
+                  </div>
+                  
+                  {/* Contact Info */}
+                  <div className="mt-8 pt-8 border-t border-white/20">
+                    <p className="text-blue-100 text-sm" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                      Hubungi kami untuk informasi lebih lanjut tentang pendaftaran
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Floating Elements */}
+                <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+                <div className="absolute bottom-8 right-8 w-20 h-20 bg-blue-300/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </main>
+    </div>
+  )
+}
+
+export default ICTDetail
+3. bagian program-khusus/TAHFIDZ
+'use client'
+
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Header } from '@/components/Header'
+import { BookOpen, Users, Target, Award, Star, CheckCircle, Heart, Brain } from 'lucide-react'
+
+const TahfidzDetail = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      
+      <main className="">
+        {/* IMG dengan Overlay untuk Desktop */}
+        <div className="relative w-full md:h-screen h-64">
+          {/* Desktop Image */}
+          <Image 
+            src="/Programkhusus/photo-1553063085-dbbf64d936ea.jpeg"
+            alt="Program Tahfidz Al-Quran"
+            fill
+            className="object-cover hidden md:block"
+            priority
+            sizes="100vw"
+            quality={75}
+          />
+          {/* Mobile Image - Height diperkecil untuk mobile */}
+          <div className="relative w-full h-full md:hidden">
+            <Image 
+              src="/Programkhusus/6-1.png"
+              alt="Program Tahfidz Al-Quran"
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+              quality={75}
+            />
+          </div>
+          
+          {/* Overlay Content untuk Desktop */}
+          <div className="absolute inset-0 hidden md:flex md:items-end">
+            <div className="w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+              <div className="container mx-auto px-8 pb-16">
+                <div className="max-w-3xl">
+                  {/* Title Panel */}
+                  <div className="block">
+                    <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 inline-flex p-5">
+                      <h1 className="text-2xl md:text-3xl lg:text-2xl font-bold text-white mb-0 line-clamp-2" style={{ fontFamily: 'Philosopher, serif' }}>
+                        Program Tahfidz Al-Quran
+                      </h1>
+                    </div>
+                  </div>
+                  
+                  {/* Subtitle Panel */}
+                  <div className="bg-gradient-to-r from-emerald-700 to-emerald-900 p-4 opacity-90 inline-flex rounded-b-lg">
+                    <p className="text-white text-sm md:text-lg font-semibold mb-0">
+                      Program unggulan yang memadukan pendidikan akademik dengan penghafalan Al-Quran
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* DIV untuk Mobile - Tinggi disesuaikan dengan gambar */}
+        <div className="w-full bg-gradient-to-r from-emerald-700 to-emerald-800 py-4 md:hidden">
+          <div className="container mx-auto px-4">
+            <div className="block">
+              {/* Title Panel untuk Mobile */}
+              <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 inline-flex p-3">
+                <h1 className="text-lg font-bold text-white mb-0" style={{ fontFamily: 'Philosopher, serif' }}>
+                  Program Tahfidz Al-Quran
+                </h1>
+              </div>
+              
+              {/* Subtitle Panel untuk Mobile */}
+              <div className="bg-gradient-to-r from-emerald-700 to-emerald-900 mb-0 p-3 opacity-90 inline-flex">
+                <div>
+                  <p className="text-white text-xs font-semibold mb-0">
+                    Program unggulan yang memadukan pendidikan akademik dengan penghafalan Al-Quran
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div id="program-details" className="container mx-auto px-4 md:px-8 py-8 md:py-20">
+          <div className="max-w-6xl mx-auto">
+            
+            {/* Introduction Section */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 rounded-full px-6 py-2 mb-6">
+                <Heart className="w-5 h-5 mr-2 text-red-500" />
+                <span className="text-sm font-semibold text-gray-700">Pendidikan Berkualitas</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight" style={{ fontFamily: 'Philosopher, serif' }}>
+                Menggabungkan <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">Akademik</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Spiritual</span>
+              </h2>
+              <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+                Program Tahfidz Al-Quran di SMP Muhammadiyah Al Kautsar PK Kartasura dirancang khusus untuk siswa yang ingin mendalami Al-Quran sambil tetap mengikuti kurikulum akademik nasional dengan metode pembelajaran yang telah terbukti efektif.
+              </p>
+            </div>
+
+            {/* Featured Image with Modern Design */}
+            <div className="relative mb-16">
+              <div className="relative group">
+                {/* Floating background elements */}
+                <div className="absolute -top-4 -left-4 w-32 h-32 bg-gradient-to-br from-emerald-400 to-blue-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl opacity-30 animate-pulse delay-1000"></div>
+                
+                {/* Main image container */}
+                <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-sm p-4 rounded-3xl shadow-2xl border border-white/20">
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-transparent to-purple-500/20"></div>
+                    <Image
+                      src="/Programkhusus/photo-1553063085-dbbf64d936ea.jpeg"
+                      alt="Program Tahfidz Al-Quran"
+                      width={800}
+                      height={500}
+                      className="w-full h-96 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    
+                    {/* Glassmorphism overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-8 left-8 right-8">
+                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                          <h3 className="text-3xl font-bold text-white mb-3">Suasana Pembelajaran</h3>
+                          <p className="text-blue-100 text-lg">Lingkungan yang kondusif untuk menghafal Al-Quran dengan suasana spiritual yang mendalam</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Corner badge */}
+                    <div className="absolute top-6 right-6 bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform translate-x-20 group-hover:translate-x-0 transition-transform duration-500">
+                      Program Unggulan
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Floating icons */}
+                <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-emerald-400 to-blue-500 rounded-2xl shadow-xl flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                  <BookOpen className="w-8 h-8 text-white" />
+                </div>
+                <div className="absolute -bottom-6 -left-6 w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full shadow-xl flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                  <Star className="w-7 h-7 text-white" />
+                </div>
+              </div>
+            </div>
+            
+            {/* Key Points */}
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              <div className="bg-gradient-to-br from-emerald-50 to-blue-50 p-8 rounded-2xl border border-emerald-100 hover:shadow-lg transition-all duration-300 group">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                    <BookOpen className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Metode Terpadu</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  Setiap siswa mendapatkan target hafalan yang disesuaikan dengan kemampuan individual, mulai dari Juz 30 (Juz Amma) hingga target yang lebih tinggi dengan bimbingan personal.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300 group">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Evaluasi Berkala</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  Sistem evaluasi berkala memastikan progress hafalan siswa dan memberikan feedback yang konstruktif untuk perbaikan dan pengembangan yang optimal.
+                </p>
+              </div>
+            </div>
+            
+            {/* Program Features Section */}
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ fontFamily: 'Philosopher, serif' }}>
+                  Keunggulan <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Program Kami</span>
+                </h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  Metode pembelajaran yang komprehensif dan terintegrasi untuk hasil optimal
+                </p>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Image Section */}
+                <div className="relative">
+                  <div className="relative group">
+                    {/* Background glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                    
+                    {/* 3D card container */}
+                    <div className="relative bg-white/90 backdrop-blur-sm p-4 rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
+                      <div className="relative overflow-hidden rounded-2xl">
+                        <Image
+                          src="/Programkhusus/6-1.png"
+                          alt="Metode Pembelajaran Tahfidz"
+                          width={400}
+                          height={300}
+                          className="w-full h-80 object-cover rounded-2xl transform group-hover:scale-110 transition-transform duration-700"
+                        />
+                        
+                        {/* Modern overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-6 left-6 right-6">
+                            <div className="bg-white/20 backdrop-blur-md rounded-xl p-4 border border-white/30">
+                              <div className="flex items-center space-x-3">
+                                <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                                <span className="text-sm font-medium text-white">Pembelajaran Aktif</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Floating badge */}
+                      <div className="absolute -top-3 -right-3 bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                        NEW
+                      </div>
+                    </div>
+                    
+                    {/* Decorative elements */}
+                    <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-br from-emerald-400 to-blue-500 rounded-2xl opacity-60 blur-xl"></div>
+                    <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-60 blur-xl"></div>
+                  </div>
+                </div>
+                
+                {/* Features Grid */}
+                <div className="grid gap-6">
+                  
+                  {/* Metode Pembelajaran */}
+                  <div className="group bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <BookOpen className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors" style={{ fontFamily: 'Philosopher, serif' }}>Metode Pembelajaran</h3>
+                        <p className="text-gray-600 leading-relaxed">Menggunakan metode talaqqi dan muraja'ah yang terbukti efektif dalam menghafal Al-Quran</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Bimbingan Personal */}
+                  <div className="group bg-gradient-to-r from-emerald-50 to-green-50 p-6 rounded-2xl border border-emerald-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Users className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors" style={{ fontFamily: 'Philosopher, serif' }}>Bimbingan Personal</h3>
+                        <p className="text-gray-600 leading-relaxed">Setiap siswa dibimbing secara individual oleh ustadz/ustadzah berpengalaman</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Target Hafalan */}
+                  <div className="group bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-2xl border border-purple-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Target className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors" style={{ fontFamily: 'Philosopher, serif' }}>Target Hafalan</h3>
+                        <p className="text-gray-600 leading-relaxed">Target disesuaikan kemampuan: Juz 30, Juz 1-5, dan juz-juz pilihan lainnya</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Evaluasi Berkala */}
+                  <div className="group bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-2xl border border-orange-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Award className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Philosopher, serif' }}>Evaluasi Berkala</h3>
+                        <p className="text-gray-600 leading-relaxed">Sistem monitoring dan evaluasi terstruktur untuk memastikan progress optimal</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+            {/* Benefits Section */}
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 rounded-full px-6 py-2 mb-6">
+                  <Star className="w-5 h-5 mr-2 text-yellow-500" />
+                  <span className="text-sm font-semibold text-gray-700">Empat Kemampuan Utama</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ fontFamily: 'Philosopher, serif' }}>
+                  Dampak <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">Positif</span> Program Tahfidz
+                </h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Program Tahfidz memberikan dampak positif komprehensif melalui empat kemampuan utama
+                </p>
+              </div>
+              
+              <div className="max-w-6xl mx-auto space-y-16">
+                
+                {/* Row 1: Al-Quran Learning - Image Left, Text Right */}
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="order-2 lg:order-1">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-green-500 rounded-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-20"></div>
+                      <div className="relative bg-white p-3 rounded-2xl shadow-xl">
+                        <Image
+                          src="/Programkhusus/6-1.png"
+                          alt="Al-Quran Learning"
+                          width={400}
+                          height={300}
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="order-1 lg:order-2 space-y-4">
+                    <div className="inline-flex items-center bg-gradient-to-r from-emerald-100 to-green-100 rounded-full px-4 py-2">
+                      <BookOpen className="w-5 h-5 mr-2 text-emerald-600" />
+                      <span className="text-sm font-semibold text-emerald-700">Kemampuan 1</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Al-Qur'an Learning</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Pembelajaran Al-Qur'an yang komprehensif meliputi <strong>Tahsin</strong> (bacaan yang benar), 
+                      <strong>Tahfidz</strong> (penghafalan), dan <strong>Tafsir</strong> (pemahaman makna) untuk membentuk 
+                      generasi Qurani yang unggul dalam ilmu dan amal.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Row 2: Courtesy - Text Left, Image Right */}
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="space-y-4">
+                    <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full px-4 py-2">
+                      <Heart className="w-5 h-5 mr-2 text-blue-600" />
+                      <span className="text-sm font-semibold text-blue-700">Kemampuan 2</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Courtesy</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Kurikulum adab yang terukur dan sistematis untuk membentuk karakter mulia, 
+                      sopan santun, dan akhlak Qurani dalam kehidupan sehari-hari.
+                    </p>
+                  </div>
+                  <div>
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-2xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-20"></div>
+                      <div className="relative bg-white p-3 rounded-2xl shadow-xl">
+                        <Image
+                          src="/Programkhusus/photo-1553063085-dbbf64d936ea.jpeg"
+                          alt="Courtesy Program"
+                          width={400}
+                          height={300}
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Row 3: Ulama' Program - Image Left, Text Right */}
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="order-2 lg:order-1">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-20"></div>
+                      <div className="relative bg-white p-3 rounded-2xl shadow-xl">
+                        <Image
+                          src="/Programkhusus/canva-background-qz8kedi3hsiz0ok3.png"
+                          alt="Ulama Program"
+                          width={400}
+                          height={300}
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="order-1 lg:order-2 space-y-4">
+                    <div className="inline-flex items-center bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-4 py-2">
+                      <Users className="w-5 h-5 mr-2 text-purple-600" />
+                      <span className="text-sm font-semibold text-purple-700">Kemampuan 3</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Ulama' Program</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Kajian kitab secara intensif yang dikupas oleh para masayikh untuk memperdalam 
+                      pemahaman agama dan membentuk generasi yang berilmu dan beramal.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Row 4: Professional Program - Text Left, Image Right */}
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="space-y-4">
+                    <div className="inline-flex items-center bg-gradient-to-r from-orange-100 to-red-100 rounded-full px-4 py-2">
+                      <Award className="w-5 h-5 mr-2 text-orange-600" />
+                      <span className="text-sm font-semibold text-orange-700">Kemampuan 4</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800" style={{ fontFamily: 'Philosopher, serif' }}>Professional Program</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Pengenalan berbagai macam profesi secara terjadwal dan terintegrasi dalam kurikulum 
+                      untuk membekali siswa dengan wawasan karier dan kesiapan menghadapi masa depan.
+                    </p>
+                  </div>
+                  <div>
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-20"></div>
+                      <div className="relative bg-white p-3 rounded-2xl shadow-xl">
+                        <Image
+                          src="/Programkhusus/html-code-on-computer-monitor-software-web-developer-programming-code-photo.jpg"
+                          alt="Professional Program"
+                          width={400}
+                          height={300}
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            {/* Gallery Section */}
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ fontFamily: 'Philosopher, serif' }}>
+                  Galeri <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">Pembelajaran</span>
+                </h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  Suasana pembelajaran yang kondusif dan inspiratif
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                {[
+                  { src: '/Programkhusus/canva-background-qz8kedi3hsiz0ok3.png', title: 'Ruang Tahfidz', desc: 'Lingkungan belajar yang nyaman', color: 'from-emerald-500 to-blue-500' },
+                  { src: '/Programkhusus/6-1.png', title: 'Pembelajaran Aktif', desc: 'Metode pembelajaran interaktif', color: 'from-purple-500 to-pink-500' },
+                  { src: '/Programkhusus/photo-1553063085-dbbf64d936ea.jpeg', title: 'Bimbingan Personal', desc: 'Pendampingan individual', color: 'from-orange-500 to-red-500' }
+                ].map((item, index) => (
+                  <div key={index} className="group relative">
+                    {/* Background glow */}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${item.color} rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`}></div>
+                    
+                    {/* Main card */}
+                    <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-white/20 transform group-hover:scale-105 transition-transform duration-500">
+                      <div className="relative overflow-hidden">
+                        <Image
+                          src={item.src}
+                          alt={item.title}
+                          width={400}
+                          height={300}
+                          className="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-700"
+                        />
+                        
+                        {/* Modern glass overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-0 left-0 right-0 p-6">
+                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                              <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                              <p className="text-blue-100 text-sm">{item.desc}</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Floating action button */}
+                        <div className="absolute top-6 right-6">
+                          <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-500">
+                            <div className={`w-8 h-8 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center`}>
+                              <Star className="w-4 h-4 text-white" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Corner decoration */}
+                    <div className={`absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-r ${item.color} rounded-full opacity-60 blur-md`}></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Call to Action Section */}
+            <div className="relative">
+              <div className="absolute inset-0 rounded-3xl transform rotate-1">
+                <Image
+                  src="/Programkhusus/canva-background-qz8kedi3hsiz0ok3.png"
+                  alt="Background"
+                  fill
+                  className="object-cover rounded-3xl"
+                />
+                <div className="absolute inset-0 bg-black/40 rounded-3xl"></div>
+              </div>
+              <div className="relative bg-transparent rounded-3xl p-8 md:p-12 text-white text-center">
+                <div className="max-w-4xl mx-auto">
+                  <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
+                    <BookOpen className="w-5 h-5 mr-2" />
+                    <span className="text-sm font-medium">Bergabung Sekarang</span>
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight" style={{ fontFamily: 'Philosopher, serif', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+                    Siap Menjadi Bagian dari <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-300" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Generasi Qurani</span>?
+                  </h2>
+                  
+                  <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-3xl mx-auto" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                    Bergabunglah dengan Program Tahfidz Al-Quran SMP Muhammadiyah Al Kautsar PK Kartasura dan jadilah bagian dari generasi Qurani yang unggul dalam ilmu dan amal. Program ini tidak hanya membentuk hafidz Al-Quran, tetapi juga pribadi yang berakhlak mulia dan berprestasi akademik.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link 
+                      href="/program-khusus"
+                      className="group bg-white text-blue-600 hover:bg-blue-50 font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                      <span className="flex items-center justify-center">
+                        Lihat Program Lainnya
+                        <Award className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform" />
+                      </span>
+                    </Link>
+                    <Link 
+                      href="/profil"
+                      className="group border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
+                    >
+                      <span className="flex items-center justify-center">
+                        Tentang Sekolah
+                        <Star className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform" />
+                      </span>
+                    </Link>
+                  </div>
+                  
+                  {/* Contact Info */}
+                  <div className="mt-8 pt-8 border-t border-white/20">
+                    <p className="text-blue-100 text-sm" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                      Hubungi kami untuk informasi lebih lanjut tentang pendaftaran
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Floating Elements */}
+                <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+                <div className="absolute bottom-8 right-8 w-20 h-20 bg-yellow-300/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </main>
+    </div>
+  )
+}
+
+export default TahfidzDetail

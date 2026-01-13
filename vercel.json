@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "name": "smp-alkautsar-frontend",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://api.alkapro.id",
+    "NEXT_PUBLIC_APP_URL": "https://alkapro.id",
+    "NEXT_PUBLIC_STORAGE_URL": "https://api.alkapro.id/storage"
+  },
+  "functions": {
+    "app/api/**/*.js": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://api.alkapro.id/api/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/storage/:path*",
+      "destination": "https://api.alkapro.id/storage/:path*"
+    }
+  ]
+}

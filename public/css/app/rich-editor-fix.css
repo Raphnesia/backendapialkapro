@@ -1,0 +1,139 @@
+/* Fix untuk masalah warna teks setelah gambar di RichEditor */
+
+/* Override prose styling untuk memastikan teks tetap hitam */
+.prose {
+  color: #000000 !important;
+}
+
+.prose p {
+  color: #000000 !important;
+}
+
+.prose li {
+  color: #000000 !important;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: #000000 !important;
+}
+
+.prose strong {
+  color: #000000 !important;
+}
+
+.prose em {
+  color: #000000 !important;
+}
+
+.prose blockquote {
+  color: #000000 !important;
+}
+
+.prose code {
+  color: #000000 !important;
+}
+
+.prose pre {
+  color: #000000 !important;
+}
+
+.prose a {
+  color: #0066cc !important;
+}
+
+/* Khusus untuk konten setelah attachment/gambar */
+.prose [data-trix-attachment] + * {
+  color: #000000 !important;
+}
+
+.prose [data-trix-attachment] ~ * {
+  color: #000000 !important;
+}
+
+/* Override untuk semua elemen dalam trix-content */
+.trix-content,
+.trix-content * {
+  color: #000000 !important;
+}
+
+/* Khusus untuk gambar dan caption */
+.trix-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.trix-content figcaption {
+  color: #666666 !important;
+  font-style: italic;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Override untuk attachment styling */
+.attachment {
+  color: #000000 !important;
+}
+
+.attachment__caption {
+  color: #666666 !important;
+}
+
+/* Pastikan semua teks dalam rich editor tetap hitam */
+[data-controller="rich-editor"] .trix-content,
+[data-controller="rich-editor"] .trix-content * {
+  color: #000000 !important;
+}
+
+/* Override untuk Filament RichEditor */
+.fi-fo-rich-editor .trix-content,
+.fi-fo-rich-editor .trix-content * {
+  color: #000000 !important;
+}
+
+.fi-fo-rich-editor .prose,
+.fi-fo-rich-editor .prose * {
+  color: #000000 !important;
+}
+
+/* Khusus untuk Navigation Sections content */
+.navigation-sections .prose,
+.navigation-sections .prose *,
+.navigation-sections .trix-content,
+.navigation-sections .trix-content * {
+  color: #000000 !important;
+}
+
+/* Override untuk konten setelah gambar di navigation sections */
+.navigation-sections [data-trix-attachment] + *,
+.navigation-sections [data-trix-attachment] ~ * {
+  color: #000000 !important;
+}
+
+/* Override untuk semua elemen br dan teks setelah gambar */
+.navigation-sections img + br,
+.navigation-sections img ~ br,
+.navigation-sections img + p,
+.navigation-sections img ~ p,
+.navigation-sections img + div,
+.navigation-sections img ~ div {
+  color: #000000 !important;
+}
+
+/* Pastikan semua teks dalam navigation sections tetap hitam */
+.navigation-sections,
+.navigation-sections * {
+  color: #000000 !important;
+}
+
+/* Override khusus untuk frontend navigation sections */
+[data-navigation-section],
+[data-navigation-section] *,
+.navigation-content,
+.navigation-content * {
+  color: #000000 !important;
+}
