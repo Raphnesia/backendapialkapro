@@ -12,9 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('prestasi_settings', function (Blueprint $table) {
-            $table->string('main_heading')->default('Prestasi Sekolah')->after('id');
-            $table->string('floating_elements_bg_color')->default('#fbbf24')->after('badge_text');
-            $table->string('floating_elements_text_color')->default('#ffffff')->after('floating_elements_bg_color');
+            if (!Schema::hasColumn('prestasi_settings', 'main_heading')) {
+                $table->string('main_heading')->default('Prestasi Sekolah')->after('id');
+            }
+            if (!Schema::hasColumn('prestasi_settings', 'floating_elements_bg_color')) {
+                $table->string('floating_elements_bg_color')->default('#fbbf24')->after('badge_text');
+            }
+            if (!Schema::hasColumn('prestasi_settings', 'floating_elements_text_color')) {
+                $table->string('floating_elements_text_color')->default('#ffffff')->after('floating_elements_bg_color');
+            }
         });
     }
 
@@ -24,7 +30,15 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('prestasi_settings', function (Blueprint $table) {
-            $table->dropColumn(['main_heading', 'floating_elements_bg_color', 'floating_elements_text_color']);
+            if (Schema::hasColumn('prestasi_settings', 'main_heading')) {
+                $table->dropColumn('main_heading');
+            }
+            if (Schema::hasColumn('prestasi_settings', 'floating_elements_bg_color')) {
+                $table->dropColumn('floating_elements_bg_color');
+            }
+            if (Schema::hasColumn('prestasi_settings', 'floating_elements_text_color')) {
+                $table->dropColumn('floating_elements_text_color');
+            }
         });
     }
 };
